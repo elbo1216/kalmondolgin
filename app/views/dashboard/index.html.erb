@@ -1,0 +1,134 @@
+<h3>Broker Dashboard</h3>
+<h2> Patrick PEBO Borja</h2>
+<div class='summary dashboard'>
+  <table>
+    <tr>
+      <th colspan=2>Sale Summary</th>
+    </tr>
+    <tr>
+      <td>Open Balance of Commissions:</td>
+      <td>$1,000,000</td>
+    </tr>
+    <tr>
+      <td>Open/Closed Commission Total</td>
+      <td>$1,230,000</td>
+    </tr>
+    <tr>
+      <td>Total Commission Collected</td>
+      <td>$5,230,000</td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <th colspan=2>Lease Summary</th>
+    </tr>
+    <tr>
+      <td>Open Balance of Commissions:</td>
+      <td>$500,000</td>
+    </tr>
+    <tr>
+      <td>Open/Closed Commission Total</td>
+      <td>$1,200,000</td>
+    </tr>
+    <tr>
+      <td>Total Commission Collected</td>
+      <td>$2,000,000</td>
+    </tr>
+  </table>
+</div>
+<div class='clear'></div>
+<table id='deal-list-table' class='personal-deal-list dashboard'>
+  <thead>
+    <tr>
+      <th colspan=9 class='table-title'>Personal Deal List</th>
+    </tr>
+    <tr class='table-headers'>
+      <th>Deal #</th>
+      <th>Type</th>
+      <th>Broker(s)</th>
+      <th>Building</th>
+      <th>Landlord/Bill To</th>
+      <th>Sq Ft</th>
+      <th>Total Commission</th>
+      <th>Open Balance</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>800</td>
+      <td>Lease</td>
+      <td>PB</td>
+      <td>926 Third Ave</td>
+      <td>1-10 Industry Associates</td>
+      <td>5,000</td>
+      <td>$17,236.00</td>
+      <td>$12,928.00</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>940</td>
+      <td>Lease</td>
+      <td>PB</td>
+      <td>512 Marlsboro Ave</td>
+      <td>Avery Inc.</td>
+      <td>10,000</td>
+      <td>$50,000.00</td>
+      <td>$4,000.00</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>738</td>
+      <td>Sale</td>
+      <td>PB</td>
+      <td>434 Bleecker St</td>
+      <td>Camr Inc.</td>
+      <td>8,970</td>
+      <td>$20,000.00</td>
+      <td>$2,000.00</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>201</td>
+      <td>Lease</td>
+      <td>PB, ND</td>
+      <td>101 North 5th</td>
+      <td>JPS Associates</td>
+      <td>2,000</td>
+      <td>$5,000.00</td>
+      <td>-</td>
+      <td>Closed</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>Lease</td>
+      <td>PB</td>
+      <td>85 Richardson St</td>
+      <td>DRA Advisors LLC</td>
+      <td>7,400</td>
+      <td>$10,000.00</td>
+      <td>-</td>
+      <td>Closed</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>Lease</td>
+      <td>PB</td>
+      <td>85 Richardson St</td>
+      <td>DRA Advisors LLC</td>
+      <td>7,400</td>
+      <td>$10,000.00</td>
+      <td>-</td>
+      <td>Closed</td>
+    </tr>
+  </tbody>
+</table>
+<div class='news'>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#deal-list-table').dataTable({
+      "aLengthMenu": [5,10,25,'all']
+    });
+  })
+</script>

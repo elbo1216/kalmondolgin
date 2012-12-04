@@ -7,6 +7,8 @@ Kalmondolgin::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  match '/dashboard' => 'dashboard#index'
+  match '/deals' => 'deals#index'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -51,7 +53,7 @@ Kalmondolgin::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'dashboard#index'
 
   # See how all your routes lay out with "rake routes"
 

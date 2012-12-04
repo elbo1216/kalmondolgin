@@ -36,6 +36,20 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # Other fields
       t.string :first_name,      :null => false
       t.string :last_name,       :null => false
+      t.date  :dob,              :null => false
+      t.date  :start_date,       :null => false
+      t.date  :end_date
+      t.string :address_line1
+      t.string :address_line2
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :office_number
+      t.string :mobile_number
+      t.string :fax_number
+      t.string :security_question
+      t.string :security_answer
+     
       
       t.timestamps
     end
