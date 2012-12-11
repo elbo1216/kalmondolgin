@@ -1,81 +1,7 @@
-/***************************************************/
-/* SCHEMES                                         */
-/***************************************************/
-.scheme-picker {
-  background-color: white;
-  color: black;
-}
-
-.msp-body-schemes {
-  background-color: rgb(185, 183, 158);
-  color: rgb(255,226, 179);
-}
-
-.msp-top-schemes {
-  background-color: rgb(44, 36, 29);
-  border-bottom: solid 6px rgb(255, 255, 255);
-}
-
-.msp-top-border {
-  border-left: solid 10px rgb(44, 36, 29);
-}
-
-.indigo-body-schemes {
-  background-color: rgb(182, 204, 184);
-  color: rgb(255,226, 179);
-}
-
-.indigo-top-schemes {
-  background-color: rgb(31, 54, 66);
-  border-bottom: solid 6px rgb(109, 150, 141);
-}
-
-.indigo-top-border {
-  border-left: solid 10px rgb(31, 54, 66);
-}
-
-.warm-grays-body-schemes {
-  background-color: rgb(171, 163, 152);
-  color: rgb(191, 183, 170);
-}
-
-.warm-grays-top-schemes {
-  background-color: rgb(64, 61, 57);
-  border-bottom: solid 6px rgb(127, 122, 113);
-}
-
-.warm-grays-top-border {
-  border-left: solid 10px rgb(64, 61, 57);
-}
-
-.times-fonts {
-  font-family: Times;
-}
-
-.arial-fonts {
-  font-family: Arial;
-}
-
-.trebuchet-fonts {
-  font-family: "Trebuchet MS";
-}
-
-.verdana-fonts {
-  font-family: "Verdana";
-}
-
-.georgia-fonts {
-  font-family: "Georgia";
-}
-
-.garamond-fonts {
-  font-family: "Garamond";
-}
-
-/***************************************************/
-
 body {
   margin: 0px;
+  background-color: rgb(198, 204, 221);
+  color: rgb(0, 0, 0);
 }
 
 ul {
@@ -93,19 +19,20 @@ a {
 }
 
 .top-container {
-  height: 100px;
+  height: 50px;
   width: 100%;
+  background-color: rgb(18, 27, 38);
 }
 
 .top-container .logo-container {
   float:left;
-  width: 20%;
-  padding: 30px 0px 0px 0px;
+  width: 15%;
+  padding: 5px 5px;
 }
 
 .top-container .top-right-container {
   float:left;
-  width: 80%;
+  width: 84%;
 }
 
 .top-container .top-right-container li {
@@ -113,30 +40,35 @@ a {
 }
 
 .top-container .main-meta {
+  color: rgb(255,226, 179);
   float: right;
-  margin: 5px 5px 0px 0px;
+  margin: 5px 0px 0px 0px;
 }
 
 .top-container .main-meta li {
   margin: 0px 0px 0px 20px;
-  
+  font-size: 12px;
 }
 
 .top-container .main-nav {
   float: left;
-  margin: 65px 0px 0px 10px
+  margin: 0px 0px 0px 55px;
+  height: 35px;
 }
 
 .top-container .main-nav li {
-  font-size: 20px;
-  width: 123px;
-  padding: 0px 10px;
+  font-size: 16px;
+  width: 130px;
   text-align: center;
+  height:30px;
+  margin: 20px 0px 0px 10px;
+  background-color: rgba(198, 204, 221, .5);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .top-container .main-nav li span {
-
-  padding-left: 10px;
+  line-height: 32px;
 }
 
 .top-container .main-nav a {
@@ -148,11 +80,9 @@ a {
 }
 
 .top-container .main-nav span:hover {
-  border-left: solid 10px rgb(255,226, 179);
   cursor: pointer;
 }
 
 .top-container .main-nav .nav-selected {
-  border-left: solid 10px rgb(255,226, 179);
-  color: rgb(255,226, 179);
+  background-color: rgb(198, 204, 221);
 }

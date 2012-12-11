@@ -20,7 +20,7 @@ $(document).ready(function() {
     top.addClass($(this).val() + '-top-schemes');
 
     var scheme = $(this).val()
-    $('.main-nav li span').each(function(index, span) {
+/*    $('.main-nav li span').each(function(index, span) {
       $($(span).attr("class").split(" ")).each(function(index,clazz) {
         if (clazz.indexOf("-top-border") != -1) {
           $(span).removeClass(clazz);
@@ -28,6 +28,12 @@ $(document).ready(function() {
       });
       $(span).addClass(scheme + '-top-border');
     })
+*/
+    if (scheme == 'indigo') {
+      $('.logo-container img').attr('src', '/images/logo_white.png')
+    } else {
+      $('.logo-container img').attr('src', '/images/logo.png')
+    }
   })
 
   $('#schemes').change()

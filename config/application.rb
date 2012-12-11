@@ -54,12 +54,12 @@ module Kalmondolgin
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    #config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-    config.assets.paths << Rails.root.join("public", "stylesheets")
-    config.assets.paths << Rails.root.join("public", "javascripts")
-    config.assets.paths << Rails.root.join("public", "images")
+    #config.assets.version = '1.0'
+    #config.assets.paths << Rails.root.join("public", "stylesheets")
+    #config.assets.paths << Rails.root.join("public", "javascripts")
+    #config.assets.paths << Rails.root.join("public", "images")
   end
 end
