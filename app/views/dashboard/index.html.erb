@@ -22,6 +22,7 @@
       <td>$5,230,000</td>
     </tr>
   </table>
+  <div class='divider'></div>
   <table>
     <tr>
       <th colspan=2>Lease Summary</th>
@@ -39,6 +40,16 @@
       <td>$2,000,000</td>
     </tr>
   </table>
+</div>
+<div id='real-estate-news-title' class='table-title'>
+  <div class='border'>
+    <div class='title'>REAL ESTATE NEWS</div>
+    <div class='collapse-table'>
+      <a id='real-estate-news-toggle' href='javascript:closeTable("real-estate-news")'>-</a>
+    </div>
+  </div>
+</div>
+<div id='real-estate-news_wrapper' class='real-estate-news'>
 </div>
 <div class='clear'></div>
 <div id='deal-list-table-title' class='table-title'>
@@ -268,16 +279,6 @@
     </tr>
   </tbody>
 </table>
-<div id='deal-upcoming-option-table-title' class='table-title'>
-  <div class='border'>
-    <div class='title'>REAL ESTATE NEWS</div>
-    <div class='collapse-table'>
-      <a id='real-estate-news-toggle' href='javascript:closeTable("real-estate-news")'>-</a>
-    </div>
-  </div>
-</div>
-<div id='real-estate-news_wrapper' class='real-estate-news'>
-</div>
 <script>
   $(document).ready(function() {
     var dealListoTable = $('#deal-list-table').dataTable({

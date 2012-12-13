@@ -11,20 +11,19 @@
   color: black;
 }
 
-h3 {
-  font-size: 16px;
-  margin: 10px;
-  color: rgba(44, 36, 29, .7);
-  font-family: Arial;
-  float: right;
+.divider {
+  border-right: solid 1px black;
+  height: 80%;
+  float:left;
+  margin: 10px 20px;
 }
 
 h2 {
   clear:both;
-  font-size: 30px;
+  font-size: 20px;
   margin: 30px 20px 20px;
   color: rgba(44, 36, 29, .7);
-  font-family: Arial;
+  font-family: Garamond;
   font-weight: bold;
 }
 
@@ -91,8 +90,8 @@ h2 {
 .deal-list th {
   padding: 10px; 
   background-color:  rgba(255,226, 179, .3);
- /*  background-color: rgb(137, 141, 153); */
   border-bottom: 1px solid rgba(240, 240, 240, 1);
+  border: 1px solid rgba(230, 230, 230, 1);
 }
 
 .deal-list th:hover {
@@ -107,7 +106,7 @@ h2 {
 .real-estate-news {
   height: 100px;
   width: 80%;
-  margin: 0px auto 50px;
+  margin: 0px auto 30px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: rgba(240, 240, 240, 1);

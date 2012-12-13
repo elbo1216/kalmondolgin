@@ -19,7 +19,7 @@ a {
 }
 
 .top-container {
-  height: 50px;
+  height: 75px;
   width: 100%;
   background-color: rgb(18, 27, 38);
 }
@@ -27,7 +27,7 @@ a {
 .top-container .logo-container {
   float:left;
   width: 15%;
-  padding: 5px 5px;
+  padding: 15px 5px;
 }
 
 .top-container .top-right-container {
@@ -41,41 +41,53 @@ a {
 
 .top-container .main-meta {
   color: rgb(255,226, 179);
-  float: right;
-  margin: 5px 0px 0px 0px;
+  margin: 5px 0px 0px 115px;
+  float: left;
 }
 
 .top-container .main-meta li {
   margin: 0px 0px 0px 20px;
   font-size: 12px;
+  float: none;
+}
+
+.top-container .main-meta .welcome {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.top-container .welcome-text {
+  margin: 50px 0px 0px 0px;
+}
+
+.top-container .sub-nav li {
+  float:left;
+  margin: 0px 0px 0px 15px;
 }
 
 .top-container .main-nav {
   float: left;
-  margin: 0px 0px 0px 55px;
+  margin: 0px 0px 0px 90px;
   height: 35px;
 }
 
 .top-container .main-nav li {
-  font-size: 16px;
-  width: 130px;
+  font-size: 18px;
+  width: 150px;
   text-align: center;
-  height:30px;
-  margin: 20px 0px 0px 10px;
+  height: 35px;
+  margin: 40px 0px 0px 20px;
   background-color: rgba(198, 204, 221, .5);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
 .top-container .main-nav li span {
-  line-height: 32px;
+  line-height: 38px;
+  color: rgba(220, 220, 220, .7);
 }
 
-.top-container .main-nav a {
-  color: inherit;
-}
-
-.top-container .main-nav a:hover {
+.top-container .main-nav span:hover {
   color: rgb(255,226, 179);
 }
 
@@ -85,4 +97,8 @@ a {
 
 .top-container .main-nav .nav-selected {
   background-color: rgb(198, 204, 221);
+}
+
+.top-container .main-nav .nav-selected span {
+  color: black;
 }
