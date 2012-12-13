@@ -41,7 +41,7 @@ a {
 
 .top-container .main-meta {
   color: rgb(255,226, 179);
-  margin: 5px 0px 0px 115px;
+  margin: 5px 0px 0px 65px;
   float: left;
 }
 
@@ -73,10 +73,10 @@ a {
 
 .top-container .main-nav li {
   font-size: 18px;
-  width: 150px;
+  width: 170px;
   text-align: center;
   height: 35px;
-  margin: 40px 0px 0px 20px;
+  margin: 40px 0px 0px 10px;
   background-color: rgba(198, 204, 221, .5);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
