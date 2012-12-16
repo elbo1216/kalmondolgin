@@ -1,12 +1,21 @@
-<div class='sub-nav-deals'>
+<div class='submit-form-top container-well form-buttons'>
+  <ul>
+    <li class='clear-form'>Clear</li>
+    <li class='submit-form'>Submit</li>
+  </ul>
 </div>
-<%= render  'sale_info' %>
-<div class='sale-left-container'>
-  <%= render  'bill_info' %>
-  <%= render  'property_info' %>
-  <%= render  'payment_schedule' %>
+<ul class='sub-nav-deals container-well'>
+  <a href='/deals/sale'><li id='sale' class='bt-border subnav-selected'>Sale</li></a>
+  <a href='/deals/lease'><li id='lease' class='bt-border'>Lease</li></a>
+  <a href='/deals/appraisal'><li id='appraisal' class='bt-border'>Appraisal</li></a>
+  <a href='/deals/tax_protest'><li id='tax_protest' class=''>Tax Protest</li></a>
+</ul>
+<div class='deals-container container-well'>
+  <%= render  @partial %>
 </div>
-<div class='sale-right-container'>
-  <%= render  'purchase_info' %>
-  <%= render  'marketing_info' %>
+<div class='submit-form-bottom container-well form-buttons'>
+  <ul>
+    <li class='clear-form'>Clear</li>
+    <li class='submit-form'>Submit</li>
+  </ul>
 </div>

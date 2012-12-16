@@ -9,6 +9,10 @@ Kalmondolgin::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   match '/dashboard' => 'dashboard#index'
   match '/deals' => 'deals#index'
+  match '/deals/sale' => 'deals#sale'
+  match '/deals/lease' => 'deals#lease'
+  match '/deals/appraisal' => 'deals#appraisal'
+  match '/deals/tax_protest' => 'deals#tax_protest'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

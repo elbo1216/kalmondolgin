@@ -11,7 +11,7 @@
 }
 
 .input-label {
-  width: 150px;
+  width: 100px;
 }
 
 .input-label-long {
@@ -26,49 +26,132 @@
   margin: 0px 0px 0px 8px;
 }
 
+.deals-container {
+  width: 75%;
+  margin: 75px 200px;
+  position: relative;
+  z-index: 100;
+}
+
 .container-well {
   background-color: rgba(240, 240, 240, 1);
   border-radius: 5px;
-  border: 2px solid rgb(150, 150, 150);
+  border: 2px solid rgba(50, 50, 50, .8);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   color: black;
   padding: 20px;
-  margin: 10px 0px 10px 0px;
+  overflow: hidden;
 }
 
-.container-well table {
+.container-frame {
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 3px;
+  padding: 20px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.container-frame table {
   margin: 0px 0px 0px 8px;
 }
 
-.container-well h3 {
+.container-frame h3 {
   float:none;
+  margin: 0px 0px 20px 0px;
 }
 
-.container-well ul {
+.container-frame ul {
   float:left;
-  margin: 0px 0px 0px 65px;
+  margin: 0px 0px 0px 35px;
 }
 
-.sale-info-container {
-  width: 80%;
-  margin: 50px auto 0px;
-  height: 100px;
-}
-
-.sale-left-container {
+.deal-left-container {
   float: left;
-  width: 40%;
-  margin: 0px 0px 0px 120px;
+  width: 45%;
+  margin: 0px 0px 0px 7px;
 }
 
-.sale-right-container {
+.deal-right-container {
   float: left;
-  width: 40%;
-  margin: 00px 0px 0px 43px;
+  width: 53%;
+  margin: 0px 0px 0px 10px;
 }
 
 .sub-nav-deals {
+  position: absolute;
+  border-right: 0px;
+  margin: 70px 0px 0px 90px;
+  z-index: 10;
+  padding: 0px;
+}
+
+.sub-nav-deals a {
+  color: black;
+}
+
+.sub-nav-deals .bt-border {
+  border-bottom: solid 1px rgb(151, 151, 151);
 }
 
 .sub-nav-deals li {
+  padding: 20px;
+  background-color: rgba(140, 140, 140, .5);
+  transition:background-color .1s ease-in;
+  -webkit-transition:background-color .1s ease-in;
+  -moz-transition:background-color .1s ease-in;
+  -o-transition:background-color .1s ease-in;
+}
+
+.sub-nav-deals .subnav-selected, .sub-nav-deals li:hover {
+  background-color: rgb(240, 240, 240);
+  font-weight: bold;
+}
+
+.submit-form-inline {
+  float: right;
+  margin: 20px 0px 0px 0px;
+}
+
+.submit-form-top {
+  position: absolute;
+  margin: -35px 0px 0px 1100px;
+  padding: 0px;
+}
+
+.submit-form-bottom {
+  position: absolute;
+  margin: -80px 0px 0px 1100px;
+  padding: 0px;
+}
+
+.form-buttons li {
+  float: left;
+  padding: 10px 30px;
+}
+
+.form-buttons .clear-form {
+  background-color: rgba(236, 142, 142, 0.5);
+  border-right: 1px solid black;
+  transition:background-color .1s ease-in;
+  -webkit-transition:background-color .1s ease-in;
+  -moz-transition:background-color .1s ease-in;
+  -o-transition:background-color .1s ease-in;
+}
+
+.form-buttons .clear-form:hover {
+  background-color: rgba(236, 142, 142, 1);
+  cursor: pointer;
+}
+
+.form-buttons .submit-form {
+  background-color: rgba(177, 230, 177, 0.5);
+  transition:background-color .1s ease-in;
+  -webkit-transition:background-color .1s ease-in;
+  -moz-transition:background-color .1s ease-in;
+  -o-transition:background-color .1s ease-in;
+}
+
+.form-buttons .submit-form:hover {
+  background-color: rgba(177, 230, 177, 1);
+  cursor: pointer;
 }

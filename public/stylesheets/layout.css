@@ -101,4 +101,5 @@ a {
 
 .top-container .main-nav .nav-selected span {
   color: black;
+  font-weight: bold;
 }
