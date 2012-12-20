@@ -2,7 +2,7 @@ class Customers < ActiveRecord::Migration
   def up
     sql = "CREATE TABLE customers (
              id              serial primary key,
-             created_by      integer not null references user(id),
+             created_by      integer not null references users(id),
              first_name      varchar(255) not null,
              last_name       varchar(255) not null,
              company         varchar(255),
@@ -13,7 +13,7 @@ class Customers < ActiveRecord::Migration
              zip             varchar(50),
              country         varchar(3),
              deleted_at      timestamp,
-             deleted_by      integer not null references user(id),
+             deleted_by      integer references users(id),
              created_at      timestamp not null default now(),
              updated_at      timestamp not null default now()
           )"

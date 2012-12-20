@@ -1,67 +1,97 @@
-<div class='bill-info-container container-frame'>
-  <h3>Bill To</h3>
-  <table>
-    <tr>
-      <td class='input-label'>First Name</td>
-      <td colspan=2><input type='text' name='first_name' id='first_name' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Last Name</td>
-      <td colspan=2><input type='text' name='last_name' id='last_name' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Company</td>
-      <td colspan=2><input type='text' name='company' id='company' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Street 1</td>
-      <td colspan=2><input type='text' name='bill_street1' id='bill_street1' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Street 2</td>
-      <td colspan=2><input type='text' name='bill_street2' id='bill_street2' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>City</td>
-      <td><input type='text' name='city' id='city' class='medium-input' /></td>
-      <td class=''>
-        <span class='short-label'>State</span>
-        <select name='state' id='state' class='small-label'></select>
-        <span class='short-label'>Zip:</span>
-        <input type='text' name='zip' id='zip' class='short-input' />
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label'>Country</td>
-      <td colspan=2><select id='country' name='country'></select></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Attention</td>
-      <td colspan=2><input type='text' name='attention' id='attention' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Principal 1</td>
-      <td colspan=2><input type='text' name='bill_principal1' id='bill_principal1' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Principal 1 Email</td>
-      <td><input type='text' name='bill_principal_email1' id='bill_principal_email1' class='medium-input' /></td>
-      <td class='input-label'>
-        <span class='phone-label'>Phone </span>
-        <input type='text' name='bill_phone1' id='bill_phone1' class='medium-input' />
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label'>Principal 2</td>
-      <td colspan=2><input type='text' name='bill_principal2' id='bill_principal2' class='long-input' /></td>
-    </tr>
-    <tr>
-      <td class='input-label'>Principal 2 Email</td>
-      <td><input type='text' name='bill_principal_email2' id='bill_principal_email2' class='medium-input' /></td>
-      <td class='input-label'>
-        <span class='phone-label'>Phone </span>
-        <input type='text' name='bill_phone2' id='bill_phone2' class='medium-input' />
-      </td>
-    </tr>
-  </table>
+<div id='bill-info-container' class='bill-info-container container-frame'>
+  <div class='form-section-title'>
+    <span class='title'>Bill To</span>
+  </div>
+    <table class='sub-menu'>
+      <tr>
+        <td id='bill-search-form' class='sub-container-tab selected'>Search</td>
+        <td id='bill-new-form' class='sub-container-tab'>New</td>
+        <td class='td-filler'></td>
+      </tr>
+    </table>
+    <div class='clear'></div>
+  <div id='bill-new' class='new-form'>
+    <table>
+      <tr>
+        <td class='input-label required'>First Name</td>
+        <td colspan=2><input type='text' id='bill-first-name' class='long-input' /></td>
+      </tr>
+      <tr>
+        <td class='input-label required'>Last Name</td>
+        <td colspan=2><input type='text' id='bill-last-name' class='long-input' /></td>
+      </tr>
+      <tr>
+        <td class='input-label required'>Company</td>
+        <td colspan=2><input type='text' id='bill-company' class='long-input' /></td>
+      </tr>
+      <tr>
+        <td class='input-label required'>Street 1</td>
+        <td colspan=2><input type='text' id='bill-street1' class='long-input' /></td>
+      </tr>
+      <tr>
+        <td class='input-label'>Street 2</td>
+        <td colspan=2><input type='text' id='bill-street2' class='long-input' /></td>
+      </tr>
+      <tr>
+        <td class='input-label required'>City</td>
+        <td><input type='text' id='bill-city' class='medium-input' /></td>
+        <td class=''>
+          <span class='span-label required'>State</span>
+          <select id='bill-state' class='small-label'></select>
+          <span class='span-label required'>Zip:</span>
+          <input type='text' id='bill-zip' class='short-input' />
+        </td>
+      </tr>
+      <tr>
+        <td class='input-label'>Country</td>
+        <td colspan=2><select id='bill-country'></select></td>
+      </tr>
+      <tr>
+        <td class='input-label required'>Attention</td>
+        <td colspan=2><input type='text' id='bill-attention-new' class='long-input' /></td>
+      </tr>
+    </table>
+    <div id='bill-principal-form' class='principal-form'></div>
+    <div class='clear'></div>
+    <div id='bill-principal-link' class='gray-button'>Add Principal</div>
+  </div>
+  <div id='bill-search' class='customer-search'>
+    <div class='search-form'>
+      Name: <input id='bill-search-text' class='search-input'/>
+      <span id='bill-search-button' class='gray-button search-button'>Search</span>
+    </div>
+    <div id='bill-selected-customer' class='selected-customer'>
+      <h3>Selected Billing Customer</h3>
+      <input type='hidden' value='' id='bill-customer-id' />
+      <ul>
+        <li><span id='bill-selected-first-name'></span> <span id='bill-selected-last-name'></span></li>
+        <li id='bill-selected-company'></li>
+        <li id='bill-selected-street1'></li>
+        <li id='bill-selected-street2'></li>
+        <li>
+          <span id='bill-selected-city'></span>
+          <span id='bill-selected-state'></span>
+          <span id='bill-selected-zip'></span>
+        </li>
+        <li id='bill-selected-country'></li>
+      </ul>
+      <div class='selected-attention'>Attention: <input type='text' id='bill-attention-search'></div>
+      <div id='bill-selected-principal-form' class='principal-form'></div>
+      <div class='clear'></div>
+      <div id='bill-selected-principal-link' class='gray-button'>Add Principal</div>
+    </div>
+    <div class='search-results'>
+      <img id='bill-search-wait' class='search-wait' src='/images/ajax-loader.gif' />
+      <table id='bill-search-results-table'>
+        <thead>
+          <tr class='search-results-header'>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Zip</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
 </div>

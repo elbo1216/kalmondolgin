@@ -1,10 +1,11 @@
-<%= render  'form_meta_info' %>
 <div class='deal-left-container'>
+  <%= render  'form_meta_info' %>
   <%= render  'bill_info' %>
   <%= render  'purchase_info' %>
-  <%= render  'property_info' %>
 </div>
 <div class='deal-right-container'>
+  <%= render  'property_info' %>
   <%= render  'marketing_info' %>
   <%= render  'payment_schedule' %>
 </div>
+<script>require(['views/sale_form'], function() {});</script>

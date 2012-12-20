@@ -1,3 +1,15 @@
+table tr {
+  height: 30px;
+}
+
+.auto-expand-floats {
+  overflow: hidden;
+}
+
+.ui-datepicker-calendar tr {
+  height: 0px;
+}
+
 .short-input {
   width: 45px;
 }
@@ -12,6 +24,7 @@
 
 .input-label {
   width: 100px;
+  font-size: 14px;
 }
 
 .input-label-long {
@@ -26,11 +39,12 @@
   margin: 0px 0px 0px 8px;
 }
 
-.deals-container {
-  width: 75%;
-  margin: 75px 200px;
-  position: relative;
-  z-index: 100;
+.max-width {
+  width: 100%;
+}
+
+.bottom-border {
+  border-bottom: solid 1px rgb(150, 150, 150);
 }
 
 .container-well {
@@ -43,21 +57,90 @@
   overflow: hidden;
 }
 
+.error-container {
+  margin: 0px 0px 10px 0px;
+  border: solid 2px rgb(200, 0, 0);
+  background-color: rgb(255, 220, 220);
+  display: none;
+}
+
+.error-title {
+  font-weight: bold;
+  font-size: 15px;
+  margin: 5px 0px;
+}
+
+.error-msg {
+  font-style: italic;
+  font-size: 14px;
+  margin: 0px 10px;
+}
+
+.error-input {
+  border: solid 2px rgb(200, 0, 0);
+}
+
 .container-frame {
   border: 1px solid rgb(150, 150, 150);
   border-radius: 3px;
-  padding: 20px;
+  padding: 0px;
   margin-top: 10px;
   overflow: hidden;
 }
 
 .container-frame table {
-  margin: 0px 0px 0px 8px;
+  margin: 10px 0px 0px 10px;
 }
 
-.container-frame h3 {
+.container-frame .form-section-title {
+  background-color: rgb(204, 204, 204);
+  font-weight: bold;
+  font-size: 18px;
   float:none;
-  margin: 0px 0px 20px 0px;
+  overflow: auto;
+  padding: 3px 0px 13px;
+}
+
+.container-frame .no-menu {
+  border-bottom: solid 1px rgb(150, 150, 150);
+}
+
+.container-frame .form-section-title .title {
+  margin: 0px 0px 0px 10px;
+}
+
+.container-frame .sub-menu {
+  width: 101%;
+  border-collapse: collapse;
+  margin: 0px;
+}
+
+.container-frame .sub-container-tab {
+  padding: 5px 20px 5px 20px;
+  font-size: 12px;
+  border-right: solid 1px rgb(150, 150, 150);
+  border-top: solid 1px rgb(150, 150, 150);
+  border-bottom: solid 1px rgb(150, 150, 150);
+  width: 20%;
+  text-align: center;
+}
+
+.container-frame .td-filler {
+  border-bottom: solid 1px rgb(150, 150, 150);
+  background-color: rgb(204, 204, 204);
+}
+
+.container-frame .selected {
+  color: black;
+  font-weight: bold;
+  cursor: none;
+  border-bottom: solid 0px rgb(150, 150, 150);
+}
+
+.container-frame .sub-container-tab:hover {
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .container-frame ul {
@@ -65,46 +148,89 @@
   margin: 0px 0px 0px 35px;
 }
 
+.container-frame .extra-customer-info-section {
+  display: none;
+}
+
+.deals-container {
+  width: 75%;
+  z-index: 100;
+  min-height: 786px;
+  float: left;
+  margin: 20px 0px 0px 0px;
+}
+
 .deal-left-container {
   float: left;
   width: 45%;
-  margin: 0px 0px 0px 7px;
 }
 
 .deal-right-container {
   float: left;
-  width: 53%;
+  width: 54%;
   margin: 0px 0px 0px 10px;
 }
 
 .sub-nav-deals {
-  position: absolute;
-  border-right: 0px;
-  margin: 70px 0px 0px 90px;
+  float: left;
   z-index: 10;
   padding: 0px;
-}
-
-.sub-nav-deals a {
-  color: black;
-}
-
-.sub-nav-deals .bt-border {
-  border-bottom: solid 1px rgb(151, 151, 151);
+  margin: 20px 50px 0px 10px;
+  border: solid 1px black;
 }
 
 .sub-nav-deals li {
-  padding: 20px;
+  padding: 10px 20px;
   background-color: rgba(140, 140, 140, .5);
+  min-width: 115px;
   transition:background-color .1s ease-in;
   -webkit-transition:background-color .1s ease-in;
   -moz-transition:background-color .1s ease-in;
   -o-transition:background-color .1s ease-in;
 }
 
+.sub-nav-deals a {
+  color: black;
+}
+
+.sub-nav-deals .new-deal {
+  background-color: rgb(240, 240, 240);
+}
+
+.sub-nav-deals .new-deal-container {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.sub-nav-deals .new-deal-container li {
+  border: 0px;
+  padding: 10px 0px 0px 5px;
+}
+
+.sub-nav-deals .new-deal-container .subnav-selected span {
+  border-left: 1px solid black;
+  font-weight: bold;
+}
+
+
+.sub-nav-deals .new-deal-container span {
+  border-left: solid 1px rgb(240, 240, 240);
+  padding: 0px 0px 0px 10px;
+}
+
+.sub-nav-deals .new-deal-container span:hover {
+  border-left: solid 1px black;
+  font-weight: bold;
+}
+
+.sub-nav-deals .bt-border {
+  border-bottom: solid 1px rgb(151, 151, 151);
+}
+
 .sub-nav-deals .subnav-selected, .sub-nav-deals li:hover {
   background-color: rgb(240, 240, 240);
   font-weight: bold;
+  cursor: pointer;
 }
 
 .submit-form-inline {
@@ -112,16 +238,11 @@
   margin: 20px 0px 0px 0px;
 }
 
-.submit-form-top {
-  position: absolute;
-  margin: -35px 0px 0px 1100px;
-  padding: 0px;
-}
-
 .submit-form-bottom {
-  position: absolute;
-  margin: -80px 0px 0px 1100px;
+  float: right;
   padding: 0px;
+  margin: 20px 0px 0px 0px;
+  z-index: 101;
 }
 
 .form-buttons li {
@@ -154,4 +275,190 @@
 .form-buttons .submit-form:hover {
   background-color: rgba(177, 230, 177, 1);
   cursor: pointer;
+}
+
+.sale-info-container .other-broker-dropdown {
+  float: left;
+  width: 30%;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.sale-info-container .other-broker-list {
+  min-height: 15px;
+  width: 50%;
+  float: left;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.other-broker-list li {
+  float:left;
+  border: 1px solid black;
+  font-size: 12px;
+  margin: 5px 10px 0px 0px;
+  padding: 2px 4px;
+  border-radius: 10px;
+}
+
+.other-broker-list .remove {
+  font-weight: bold;
+  font-family: courier;
+  margin: 0px 0px 0px 10px;
+  font-size: 10px;
+}
+
+.other-broker-list .remove:hover {
+  cursor: pointer;
+}
+
+.gray-button {
+  text-align: center;
+  font-size: 12px;
+  margin: 10px 0px 10px 10px;
+  width: 100px;
+  border-radius: 5px;
+  border: solid 1px rgb(150, 150, 150);
+  background-color: rgb(220, 220, 220);
+}
+
+.gray-button:hover {
+  cursor: pointer;
+  background-color: rgb(235, 235, 235);
+}
+
+.principal-form {
+  overflow: hidden;
+}
+
+.container-frame .principal {
+  border: 1px solid rgb(150,150,150);
+  padding: 3px 10px 10px;
+  margin: 5px 13px;
+  float: none;
+}
+
+.principal .title {
+  margin: 0px 0px 5px 0px;
+  font-size: 14px;
+  float: left;
+  font-style: italic;
+}
+
+.principal .close {
+  float: right;
+}
+
+.principal .close:hover {
+  cursor: pointer;
+}
+
+.new-form {
+  display: none;
+}
+
+.customer-search .search-form {
+  padding: 20px 9px;
+  font-size: 12px;
+}
+
+.customer-search .search-form .search-input {
+  width: 70%;
+}
+
+.property-search .search-form .search-input {
+  width: 90%;
+}
+
+.customer-search .search-form .short-search-input {
+  width: 15%;
+  margin: 0px 20px 0px 0px;
+}
+
+.customer-search .search-form .search-button {
+  padding: 0px 20px;
+}
+
+.customer-search .search-results .search-wait {
+  margin: 50px 0px;
+  display: none;
+}
+
+.customer-search .search-results {
+  width: 100%;
+  border-top: 1px solid rgb(150, 150, 150);
+  margin: auto;
+  text-align: center;
+  height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.customer-search .search-results table {
+  display: none;
+  width: 101%;
+  border-collapse: collapse;
+  margin: 0px;
+}
+
+.customer-search .search-results .search-results-header {
+  background-color: rgb(204, 204, 204);
+}
+
+.customer-search .search-results table th {
+  border-bottom: solid 1px rgb(150, 150, 150);
+  font-size: 12px;
+  padding: 0px 10px;
+  text-align: left;
+}
+
+.customer-search .search-results table td {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.customer-search .search-results .results-row:hover {
+  background-color: rgb(250, 250, 250);
+  cursor: pointer;
+}
+
+.customer-search .selected-customer {
+  font-size: 14px;
+  display:none;
+  width: 100%;
+  border-top: solid 1px rgb(150, 150, 150);
+}
+
+.customer-search .selected-customer h3 {
+  margin: 10px 10px 0px;
+  font-size: 13px;
+}
+
+.customer-search .selected-customer ul {
+  float: none;
+  margin: 10px 10px;
+}
+
+.customer-search .selected-attention {
+  margin: 5px 10px; 
+}
+
+table td .span-label {
+  margin: 0px 0px 0px 5px;
+  font-size: 14px;
+}
+
+.payment-schedule-container table .add-row-button {
+  padding: 0px 20px;
+}
+
+.sale-info-container .list {
+  padding: 10px 10px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.required {
+  font-size: 12px;
+  font-weight: bold;
 }

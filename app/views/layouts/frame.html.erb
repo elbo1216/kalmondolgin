@@ -3,11 +3,8 @@
     <%= stylesheet_link_tag "layout" %>
     <%= stylesheet_link_tag "dashboard" %>
     <%= stylesheet_link_tag "deals" %>
-    <%= javascript_include_tag "lib/jquery-1.7.2.min" %>
-    <%= javascript_include_tag "lib/jquery.dataTables" %>
-    <%= javascript_include_tag "main" %>
-    <%= javascript_include_tag "deals" %>
-    <%= javascript_include_tag "schemes" %>
+    <%= stylesheet_link_tag "lib/jquery-ui/jquery-ui-1.10.1.custom" %>
+    <script data-main="/javascripts/app/main.js" src="/javascripts/lib/RequireJS.2.1.2.js"></script>
   </head>
   <body>
     <div class='top-container'>
@@ -36,6 +33,7 @@
         </ul>
       </div>
     </div>
+    <div class='clear'></div>
     <div class='main-content'>
       <%= yield %>
     </div>

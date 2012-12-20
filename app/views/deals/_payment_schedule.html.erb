@@ -1,38 +1,33 @@
 <div class='payment-schedule-container container-frame'>
-  <h3>Payout Schedule</h3>
+  <div class='form-section-title no-menu'>
+    <span class='title'>Payout Schedule</span>
+  </div>
   <table id='payment-schedule-table'>
     <thead>
       <tr>
         <th>Date</th>
         <th>Payment Due</th>
-        <th>Date</th>
-        <th>Payment</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
+        <td><input id='paymentDate1' name='paymentDate' type=text class='medium-input'></td>
+        <td><input id='paymentDue1' type=text class='medium-input'></td>
       </tr>
       <tr>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
+        <td><input id='paymentDate2' name='paymentDate' type=text class='medium-input'></td>
+        <td><input id='paymentDue2'type=text class='medium-input'></td>
       </tr>
       <tr>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
-        <td><input type=text class='medium-input'></td>
+        <td><input id='paymentDate3' name='paymentDate' type=text class='medium-input'></td>
+        <td><input id='paymentDue3' type=text class='medium-input'></td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan=4><button id='add-payment-row'>Add Row</button></td>
+        <td colspan=4><span id='add-payment-row' class='gray-button add-row-button'>Add Row</button></span>
       </tr>
     </tfoot>
   </table>
 </div>
+<script>require(['views/payout_schedule'], function() {} );</script>

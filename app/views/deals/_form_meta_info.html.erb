@@ -1,21 +1,47 @@
 <div class='sale-info-container container-frame'>
-  <h3><%= @form_label %> Info</h3>
-  <ul>
-    <li>Broker: Patrick PEBO Borja</li>
-    <li>Deal #: 12345</li>
-  </ul>
-  <ul>
+  <div class='form-section-title no-menu'>
+    <span class='title'><%= @form_label %> Info</span>
+  </div>
+  <ul class='list bottom-border max-width'>
+    <% if current_user.is_admin -%>
+      <li>Broker: 
+        <select id='deal-main-broker' class='list-btn'>
+          <option value='' disabled>--Select--</option>
+        </select>
+      </li>
+    <% else -%>
+      <li>
+         Broker: Patrick PEBO Borja
+         <input id='deal-main-broker' type='hidden' value='Patrick Borja'/>
+      </li>
+    <% end -%>
     <li>Type: <%= @form_label %></li>
-    <li>Total Commision to KDA: <input type='text' class='short-input' name='kda_comm' /></li>
+    <li class='required'>Total Commision to KDA: <input type='text' class='short-input' name='kda_comm' id='kda_comm' /></li>
   </ul>
+  <div class='clear'></div>
   <% if @show_extra_broker_info %>
-    <ul id='co-broker-info'>
-      <li>Co-Broker: <select name='co_broker'><option>Prudential</option></select></li>
-      <li>Co-Broker %: <input type='text' class='short-input' name='co_broker_per' /></li>
-    </ul>
-    <ul id='other-broker-info'>
-      <li>Other Brokers in Deal: <button>Add Broker</button></li>
-      <li>RK, CK</li>
-    </ul>
+    <div class='bottom-border auto-expand-floats'>
+      <ul id='co-broker-info' class='list'>
+        <li>Co-Broker: <select id='co-broker-select' name='co_broker'><option>Prudential</option></select></li>
+        <li>Co-Broker %: <input type='text' class='short-input' name='co_broker_per' /></li>
+      </ul>
+      <ul class='list'>
+        <li><input type='checkbox' id='activate-create-co-broker' value='1' />New Co-Broker</li>
+        <li>Name: <input type='text' class='medium-input' name='new-co-broker' id='new-co-broker' disabled/></li>
+      </ul>
+    </div>
+    <div class='clear'></div>
+    <div class=''>
+      <ul id='other-broker-info' class='no-border other-broker-dropdown'>
+        <li>Other Brokers in Deal:</li>
+        <li> 
+           <select id='broker-list-btn' class='list-btn' size='10'>
+             <option value="" disabled>-- Add Broker --</option></select>
+        </li>
+      </ul>
+      <ul id='broker-list' class='other-broker-list'>
+        <div>Selected Brokers:<div>
+      </ul>
+    </div>
   <% end -%>
 </div>

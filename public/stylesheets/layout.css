@@ -41,8 +41,8 @@ a {
 
 .top-container .main-meta {
   color: rgb(255,226, 179);
-  margin: 5px 0px 0px 65px;
-  float: left;
+  margin: 5px 10px 0px 0px;
+  float: right;
 }
 
 .top-container .main-meta li {
@@ -102,4 +102,8 @@ a {
 .top-container .main-nav .nav-selected span {
   color: black;
   font-weight: bold;
+}
+
+.main-content {
+  overflow: hidden;
 }

@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # Other fields
       t.string :first_name,      :null => false
       t.string :last_name,       :null => false
+      t.string :key,             :null => false, :unique => true
       t.date  :dob,              :null => false
       t.date  :start_date,       :null => false
       t.date  :end_date

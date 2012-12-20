@@ -6,6 +6,7 @@ class Properties < ActiveRecord::Migration
              street_line2     varchar(1024),
              city             varchar(1024) not null,
              state            varchar(2) not null,
+             zip              varchar(10) not null,
              country          varchar(3) not null,
              space_type_id    integer not null references space_types(id),
              size             integer,

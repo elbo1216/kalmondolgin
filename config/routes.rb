@@ -9,10 +9,18 @@ Kalmondolgin::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   match '/dashboard' => 'dashboard#index'
   match '/deals' => 'deals#index'
+  match '/deals/search' => 'deals#search'
   match '/deals/sale' => 'deals#sale'
   match '/deals/lease' => 'deals#lease'
   match '/deals/appraisal' => 'deals#appraisal'
   match '/deals/tax_protest' => 'deals#tax_protest'
+  match '/deals/get_all_brokers' => 'deals#get_all_brokers'
+  match '/deals/get_states' => 'deals#get_states'
+  match '/deals/get_all_countries' => 'deals#get_all_countries'
+  match '/deals/get_all_space_types' => 'deals#get_all_space_types'
+  match '/deals/get_customers' => 'deals#get_customers'
+  match '/deals/get_properties' => 'deals#get_properties'
+  match '/deals/submit' => 'deals#submit'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
