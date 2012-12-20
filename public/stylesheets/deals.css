@@ -18,19 +18,12 @@
   width: 200px;
 }
 
-.short-label {
+.short0-label {
   margin: 0px 0px 0px 12px;
 }
 
 .phone-label {
   margin: 0px 0px 0px 8px;
-}
-
-.deals-container {
-  width: 75%;
-  margin: 75px 200px;
-  position: relative;
-  z-index: 100;
 }
 
 .container-well {
@@ -65,6 +58,14 @@
   margin: 0px 0px 0px 35px;
 }
 
+.deals-container {
+  width: 75%;
+  z-index: 100;
+  min-height: 786px;
+  float: left;
+  margin: 20px 0px 0px 0px;
+}
+
 .deal-left-container {
   float: left;
   width: 45%;
@@ -78,33 +79,66 @@
 }
 
 .sub-nav-deals {
-  position: absolute;
+  float: left;
   border-right: 0px;
-  margin: 70px 0px 0px 90px;
   z-index: 10;
   padding: 0px;
-}
-
-.sub-nav-deals a {
-  color: black;
-}
-
-.sub-nav-deals .bt-border {
-  border-bottom: solid 1px rgb(151, 151, 151);
+  margin: 50px -50px 0px 100px
 }
 
 .sub-nav-deals li {
-  padding: 20px;
+  padding: 10px 20px;
   background-color: rgba(140, 140, 140, .5);
+  min-width: 115px;
   transition:background-color .1s ease-in;
   -webkit-transition:background-color .1s ease-in;
   -moz-transition:background-color .1s ease-in;
   -o-transition:background-color .1s ease-in;
 }
 
+.sub-nav-deals a {
+  color: black;
+}
+
+.sub-nav-deals .new-deal {
+  background-color: rgb(240, 240, 240);
+}
+
+.sub-nav-deals .new-deal-container {
+  display: none;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.sub-nav-deals .new-deal-container li {
+  border: 0px;
+  padding: 10px 0px 0px 5px;
+}
+
+.sub-nav-deals .new-deal-container .subnav-selected span {
+  border-left: 1px solid black;
+  font-weight: bold;
+}
+
+
+.sub-nav-deals .new-deal-container span {
+  border-left: solid 1px rgb(240, 240, 240);
+  padding: 0px 0px 0px 10px;
+}
+
+.sub-nav-deals .new-deal-container span:hover {
+  border-left: solid 1px black;
+  font-weight: bold;
+}
+
+.sub-nav-deals .bt-border {
+  border-bottom: solid 1px rgb(151, 151, 151);
+}
+
 .sub-nav-deals .subnav-selected, .sub-nav-deals li:hover {
   background-color: rgb(240, 240, 240);
   font-weight: bold;
+  cursor: pointer;
 }
 
 .submit-form-inline {
@@ -112,16 +146,11 @@
   margin: 20px 0px 0px 0px;
 }
 
-.submit-form-top {
-  position: absolute;
-  margin: -35px 0px 0px 1100px;
-  padding: 0px;
-}
-
 .submit-form-bottom {
-  position: absolute;
-  margin: -80px 0px 0px 1100px;
+  float: right;
   padding: 0px;
+  margin: 20px 0px 0px 0px;
+  z-index: 101;
 }
 
 .form-buttons li {

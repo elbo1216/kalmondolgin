@@ -9,6 +9,7 @@ Kalmondolgin::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   match '/dashboard' => 'dashboard#index'
   match '/deals' => 'deals#index'
+  match '/deals/search' => 'deals#search'
   match '/deals/sale' => 'deals#sale'
   match '/deals/lease' => 'deals#lease'
   match '/deals/appraisal' => 'deals#appraisal'

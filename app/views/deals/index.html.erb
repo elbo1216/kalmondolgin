@@ -1,21 +1,37 @@
-<div class='submit-form-top container-well form-buttons'>
-  <ul>
-    <li class='clear-form'>Clear</li>
-    <li class='submit-form'>Submit</li>
-  </ul>
-</div>
 <ul class='sub-nav-deals container-well'>
-  <a href='/deals/sale'><li id='sale' class='bt-border subnav-selected'>Sale</li></a>
-  <a href='/deals/lease'><li id='lease' class='bt-border'>Lease</li></a>
-  <a href='/deals/appraisal'><li id='appraisal' class='bt-border'>Appraisal</li></a>
-  <a href='/deals/tax_protest'><li id='tax_protest' class=''>Tax Protest</li></a>
+  <a href='/deals/search'><li id='search' class='bt-border'>Search</li></a>
+    <li id='new' class='bt-border subnav-selected'>New
+    <ul class='new-deal-container'>
+      <a href='/deals/sale'>
+        <li id='sale' class='bt-border subnav-selected new-deal'>
+          <span>Sale</span>
+        </li>
+      </a>
+      <a href='/deals/lease'>
+        <li id='lease' class='bt-border new-deal'>
+          <span>Lease</span>
+        </li>
+      </a>
+      <a href='/deals/appraisal'>
+        <li id='appraisal' class='bt-border new-deal'>
+          <span>Appraisal</span>
+        </li>
+      </a>
+      <a href='/deals/tax_protest'>
+        <li id='tax_protest' class='new-deal'>
+          <span>Tax Protest</span>
+        </li>
+      </a>
+    </ul>
+  </li>
 </ul>
 <div class='deals-container container-well'>
   <%= render  @partial %>
-</div>
+<div class='clear'></div>
 <div class='submit-form-bottom container-well form-buttons'>
   <ul>
     <li class='clear-form'>Clear</li>
     <li class='submit-form'>Submit</li>
   </ul>
+</div>
 </div>

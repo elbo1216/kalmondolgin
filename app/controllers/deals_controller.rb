@@ -5,6 +5,11 @@ class DealsController < ApplicationController
     redirect_to "/deals/sale"
   end
 
+  def search
+    @partial = "search_form"
+    render "index"
+  end
+
   def sale
     @partial = "sale_form"
     @form_label = "Sale"
