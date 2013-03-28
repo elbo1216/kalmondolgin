@@ -5,6 +5,7 @@ class DealTypes < ActiveRecord::Migration
              key                     varchar(255) not null,
              name                    varchar(255) not null,
              description             text,
+             table_ref               text,
              created_at              timestamp not null default now(),
              updated_at              timestamp not null default now()
            )"
@@ -12,6 +13,7 @@ class DealTypes < ActiveRecord::Migration
   end
 
   def down
-    drop_table :deal_types
+    sql = "DROP TABLE deal_types CASCADE"
+    execute sql
   end
 end

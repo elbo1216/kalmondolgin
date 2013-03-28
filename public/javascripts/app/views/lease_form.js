@@ -8,9 +8,6 @@ define(['jquery',
         'app/views/deal_form'], function($, _, Backbone) {
     // Populate the states drop down
   $(document).ready(function() {
-    // TODO: Need a better way to do this...
-    var dealData = $('#deals-data').html();
-
     // Bind change event to broker selection 
     $('#broker-list-btn').change(function() {
       var value = $(this).val();
@@ -51,7 +48,7 @@ define(['jquery',
     var propertyView = new PropertyView();
     var marketingView = new MarketingView();
     var paymentScheduleView = new PayoutView();
-    var saleForm = new DealFormView(
+    var leaseForm = new DealFormView(
              {'el': '#deals-form-container',
               'registeredForms': [
                    {
@@ -81,42 +78,61 @@ define(['jquery',
                    }
               ]
              });
-    saleForm.initialize();
-    saleForm.populateStatesOptions(['bill_state', 'purchaser-state', 'property-state']);
-    saleForm.populateCountryOptions(['bill-country', 'purchaser-country', 'property-country']);
-    saleForm.populateSpaceTypeOptions(['space-type']);
+    leaseForm.initialize();
+    leaseForm.populateStatesOptions(['bill_state', 'purchaser-state', 'property-state']);
+    leaseForm.populateCountryOptions(['bill-country', 'purchaser-country', 'property-country']);
+    leaseForm.populateSpaceTypeOptions(['space-type']);
+    leaseForm.populateBrokersOptions(['broker-list-btn', 'deal-main-broker']);
     
     $('.submit-form').click(function() {
-      var errors = saleForm.validateForm();
+      var errors = leaseForm.validateForm();
       if (errors.length > 0) {
-        saleForm.populateErrorMsg('message-container', errors);
+        populateErrorMsg(errors);
       } else {
-        var saleParams = {'dealType': 'sale',
+        var leaseParams = {'dealType': 'lease',
                           'mainBroker': $('#deal-main-broker').val(),
                           'totalDueToKDA': $('#kda_comm').val()
                          };
         // Get Co-Broker name
         if ($('#activate-create-co-broker:checked').val() != undefined) {
-          $.extend(saleParams, {'coBroker': $('#new-co-broker').val()});
+          $.extend(leaseParams, {'coBroker': $('#new-co-broker').val()});
         } else {
-          $.extend(saleParams, {'coBroker': $('#co-broker-select').val()});
+          $.extend(leaseParams, {'coBroker': $('#co-broker-select').val()});
         }
 
         // Get Co-Broker Percentage
-        $.extend(saleParams, {'coBrokerPer': $('#co_broker_per').val()});
+        $.extend(leaseParams, {'coBrokerPer': $('#co_broker_per').val()});
 
-        // Get All of the other brokers on the sale
+        // Get All of the other brokers on the lease
         var otherBrokers = [];
         $('input[name="other-broker-list"]').each(function (index, input) {
           otherBrokers.push($(input).val());
         });
         
-        if (otherBrokers.length > 0) { $.extend(saleParams, {'otherBrokers' : otherBrokers}) } 
+        if (otherBrokers.length > 0) { $.extend(leaseParams, {'otherBrokers' : otherBrokers}) } 
         // Add the message container to send success message
-        $.extend(saleParams, {'messageContainer': 'message-container'})
-        saleForm.submitForm(saleParams);
+        $.extend(leaseParams, {'messageContainer': 'message-container'})
+        leaseForm.submitForm(leaseParams);
       }
     });
   });
 
+  function populateErrorMsg(errorMsg) {
+    var ul = $('<ul>');
+    for( var i=0; i<errorMsg.length; i++) {
+      var ul2 = $('<ul>').css('float', 'none');
+      ul2.append($('<li>').html(errorMsg[i]['title'])
+                          .addClass('error-title'));
+      for (var j=0; j<errorMsg[i]['errors'].length; j++) {
+        ul2.append($('<li>').html(errorMsg[i]['errors'][j])
+                            .addClass('error-msg'));
+      }
+      ul.append($('<li>').append(ul2));
+    }
+    $('input').removeClass('input-error');
+    $('#message-container').addClass('error-container')
+                           .empty()
+                           .append(ul)
+                           .show();
+  }
 });

@@ -1,12 +1,12 @@
 class BulkLoadDealTypes < ActiveRecord::Migration
   def up
-    sql = "INSERT INTO deal_types (key, name) values ('sale', 'Sale');"
+    sql = "INSERT INTO deal_types (key, name, table_ref) values ('sale', 'Sale', 'deals_sale');"
     execute sql
-    sql =  "INSERT INTO deal_types (key, name) values ('lease', 'Lease');"
+    sql =  "INSERT INTO deal_types (key, name, table_ref) values ('lease', 'Lease', 'deals_lease');"
     execute sql
-    sql =  "INSERT INTO deal_types (key, name) values ('appraisal', 'Appraisal');"
+    sql =  "INSERT INTO deal_types (key, name, table_ref) values ('appraisal', 'Appraisal', 'deals_appraisal');"
     execute sql
-    sql =  "INSERT INTO deal_types (key, name) values ('tax_protest', 'Tax Protest');"
+    sql =  "INSERT INTO deal_types (key, name, table_ref) values ('tax_protest', 'Tax Protest', 'deals_tax_protest');"
     execute sql
   end
 

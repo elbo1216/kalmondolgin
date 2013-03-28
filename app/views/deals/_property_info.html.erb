@@ -14,29 +14,29 @@
     <table>
       <tr>
         <td class='input-label'>Street 1</td>
-        <td><input type='text' id='property_street1' class='long-input' /></td>
+        <td><input type='text' id='property-street1' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label'>Street 2</td>
-        <td><input type='text' id='property_street2' class='long-input' /></td>
+        <td><input type='text' id='property-street2' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label'>City</td>
-        <td><input type='text' id='property_city' class='medium-input' />
+        <td><input type='text' id='property-city' class='medium-input' />
           <span class='span-label'>State</span>
-          <select id='property_state' class='small-label'></select>
+          <select id='property-state' class='small-label'></select>
           <span class='span-label'>Zip:</span>
-          <input type='text' id='property_zip' class='short-input' />
+          <input type='text' id='property-zip' class='short-input' />
         </td>
       </tr>
       <tr>
         <td class='input-label'>Country</td>
-        <td><select id='property_country'></select></td>
+        <td><select id='property-country'></select></td>
       </tr>
       <tr>
         <td class='input-label'>Space Type</td>
         <td>
-          <select id='space_type'></select>
+          <select id='space-type'></select>
         </td>
       </tr>
       <tr>
@@ -51,12 +51,12 @@
       <tr>
         <td class='input-label'>Buyer Use</td>
         <td>
-          <input type='text' id='buyer_use' class='medium-input' />
+          <input type='text' id='buyer-use' class='medium-input' />
         </td>
       </tr>
         <td class='input-label'>Attorney Name</td>
         <td>
-          <input type='text' id='property_attorney' class='medium-input' />
+          <input type='text' id='property-attorney' class='medium-input' />
         </td>
       </tr>
     </table>
@@ -70,24 +70,41 @@
       Zip: <input id='property-search-zip' class='short-search-input'/>
       <span id='property-search-button' class='gray-button search-button'>Search</span>
     </div>
-    <div id='property-selected-customer' class='selected-customer'>
-      <h3>Selected Property</h3>
-      <input type='hidden' value='' id='property-id' />
-      <ul>
-        <li id='property-selected-street1'></li>
-        <li id='property-selected-street2'></li>
-        <li>
-          <span id='property-selected-city'></span>
-          <span id='property-selected-state'></span>
-          <span id='property-selected-zip'></span>
-        </li>
-        <li id='property-selected-country'></li>
-        <li id='property-selected-space-type'></li>
-        <li id='property-selected-sale-price'></li>
-        <li id='property-selected-size'></li>
-        <li id='property-selected-buyer-use'></li>
-        <li id='property-selected-attorney-name'></li>
-      </ul>
+    <div id='property-selected' class='selected-container'>
+      <div class='selected-data'>
+        <h3>Selected Property</h3>
+        <input type='hidden' value='' id='property-id' />
+        <ul>
+          <li id='property-selected-street1'></li>
+          <li id='property-selected-street2'></li>
+          <li>
+            <span id='property-selected-city'></span>
+            <span id='property-selected-state'></span>
+            <span id='property-selected-zip'></span>
+          </li>
+          <li id='property-selected-country'></li>
+          <li id='property-selected-space-type'></li>
+        </ul>
+      </div>
+      <table>
+        <tr>
+          <td><span class='span-label'>Sale Price</span></td>
+          <td>$<input type='text' id='property-selected-sale-price' class='medium-input' /></td>
+        </tr>
+        <tr>
+          <td><span class='span-label'>Size</span></td>
+          <td><input type='text' id='property-selected-size' class='short-input' />ft
+          <span id='sqft' class='span-label'></span></td>
+        </tr>
+        <tr>
+          <td><span class='span-label'>Buyer Use</span></td>
+          <td><input type='text' id='selected-buyer-use' class='medium-input' /></td>
+        </tr>
+        <tr>
+          <td><span class='span-label'>Attorney Name</span></td>
+          <td><input type='text' id='property-selected-attorney' class='medium-input' /></td>
+        </tr>
+      </table>
     </div>
     <div class='search-results'>
       <img id='property-search-wait' class='search-wait' src='/images/ajax-loader.gif' />

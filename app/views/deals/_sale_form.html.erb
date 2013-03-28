@@ -1,11 +1,11 @@
 <div class='deal-left-container'>
-  <%= render  'form_meta_info' %>
-  <%= render  'bill_info' %>
-  <%= render  'purchase_info' %>
+  <%= render 'form_meta_info', :show_broker_form => true, :form_label => 'Sale' %>
+  <%= render 'bill_info' %>
+  <%= render 'purchase_info' %>
 </div>
 <div class='deal-right-container'>
-  <%= render  'property_info' %>
-  <%= render  'marketing_info' %>
-  <%= render  'payment_schedule' %>
+  <%= render 'property_info' %>
+  <%= render 'marketing_info' %>
+  <%= render 'payment_schedule' %>
 </div>
 <script>require(['views/sale_form'], function() {});</script>

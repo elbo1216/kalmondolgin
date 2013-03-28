@@ -1,11 +1,12 @@
-<%= render  'form_meta_info' %>
 <div class='deal-left-container'>
+  <%= render  'form_meta_info', :show_broker_form => true, :form_label => 'Lease' %>
   <%= render  'bill_info' %>
   <%= render  'purchase_info' %>
-  <%= render  'property_info' %>
 </div>
 <div class='deal-right-container'>
+  <%= render  'property_info' %>
   <%= render  'marketing_info' %>
   <%= render  'options' %>
   <%= render  'payment_schedule' %>
 </div>
+<script>require(['views/lease_form'], function() {});</script>

@@ -1,22 +1,41 @@
 <div class='search-criteria container-frame'>
-  <table>
-    <tr>
-      <td>Deal ID:</td>
-      <td><input type='text' name='deal_id' /></td>
-    </tr>
-    <tr>
-      <td class='label'>Deal Type</td>
-      <td>
-        <select name='deal_type' id='deal_type'>
-          <option value='sale'>Sale</option>
-          <option value='lease'>Lease</option>
-          <option value='appraisal'>Appraisal</option>
-          <option value='tax_protest'>Tax Protest</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=2><button>Search</button></td>
-    </tr>
+  <%= form_tag '/deals/search' do %>
+    <table>
+      <tr>
+        <td>Deal ID:</td>
+        <td><%= text_field_tag :deal_id %></td>
+      </tr>
+      <tr>
+        <td class='label'>Deal Type</td>
+        <td>
+          <%= select_tag :deal_type, options_for_select(@deal_type_options, @deal_type) %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2><button>Search</button></td>
+      </tr>
+    </table>
+  <% end -%>
+  <% if @deal -%>
+  <table class= 'deal-search-results' >
+    <thead>
+      <tr>
+        <th>Deal ID</th>
+        <th>Deal Type</th>
+        <th>Broker</th>
+        <th>Bill To</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <% @deal.each do |d| -%>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= d.deal_type.name%></td>
+        <td><%= "#{d.primary_broker.first_name} #{d.primary_broker.last_name}" -%></td>
+        <td><%= "#{d.billed_customer.first_name} #{d.billed_customer.last_name}" -%></td>
+        <td><%= link_to 'Edit', :controller => 'deals', :action => d.deal_type.key, :id => d.id %></td>
+      </tr>
+    <% end -%>
   </table>
+  <% end -%>
 </div>

@@ -14,41 +14,41 @@
     <table>
       <tr>
         <td class='input-label required'>First Name</td>
-        <td colspan=2><input type='text' name='purchaser-first-name' id='purchaser-first-name' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-first-name' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label required'>Last Name</td>
-        <td colspan=2><input type='text' name='purchaser-last-name' id='purchaser-last-name' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-last-name' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label required'>Company</td>
-        <td colspan=2><input type='text' name='purchaser-company' id='purchaser-company' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-company' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label required'>Street 1</td>
-        <td colspan=2><input type='text' name='purchaser-street1' id='purchaser-street1' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-street1' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label'>Street 2</td>
-        <td colspan=2><input type='text' name='purchaser-street2' id='purchaser-street2' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-street2' class='long-input' /></td>
       </tr>
       <tr>
         <td class='input-label required'>City</td>
-        <td><input type='text' name='purchaser-city' id='purchaser-city' class='medium-input' /></td>
+        <td><input type='text' id='purchaser-city' class='medium-input' /></td>
         <td class=''>
           <span class='span-label required'>State</span>
-          <select name='purchaser-state' id='purchaser-state' class='small-label'></select>
+          <select  id='purchaser-state' class='small-label'></select>
           <span class='span-label required'>Zip:</span>
-          <input type='text' name='zip' id='zip' class='short-input' />
+          <input type='text' id='purchaser-zip' class='short-input' />
         </td>
       </tr>
       <tr>
         <td class='input-label'>Country</td>
-        <td colspan=2><select id='purchaser-country' name='purchaser-country'></select></td>
+        <td colspan=2><select id='purchaser-country'></select></td>
       </tr>
       <tr>
         <td class='input-label required'>Attention</td>
-        <td colspan=2><input type='text' name='purchaser-attention' id='purchaser-attention' class='long-input' /></td>
+        <td colspan=2><input type='text' id='purchaser-attention-new' class='long-input' /></td>
       </tr>
     </table>
     <div id='purchaser-principal-form' class='principal-form'></div>
@@ -60,7 +60,7 @@
       Name: <input id='purchaser-search-text' class='search-input'/>
       <span id='purchaser-search-button' class='gray-button search-button'>Search</span>
     </div>
-    <div id='purchaser-selected-customer' class='selected-customer'>
+    <div id='purchaser-selected-customer' class='selected-container'>
       <h3>Selected Purchasing Customer</h3>
       <input type='hidden' value='' id='purchaser-customer-id' />
       <ul>
@@ -75,7 +75,8 @@
         </li>
         <li id='purchaser-selected-country'></li>
       </ul>
-      <div class='selected-attention'>Attention: <input type='text' id='purchaser-attention'></div>
+      <div class='selected-attention'>Attention: <input type='text' id='purchaser-attention-search'></div>
+      <div class='clear'></div>
       <div id='purchaser-selected-principal-form' class='principal-form'></div>
       <div class='clear'></div>
       <div id='purchaser-selected-principal-link' class='gray-button'>Add Principal</div>

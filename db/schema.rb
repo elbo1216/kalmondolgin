@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205030724) do
+ActiveRecord::Schema.define(:version => 20130513220536) do
+
+  create_table "a", :id => false, :force => true do |t|
+    t.integer "id",   :null => false
+    t.text    "name"
+  end
+
+  create_table "b", :id => false, :force => true do |t|
+    t.integer "id"
+    t.integer "a_id"
+    t.text    "name"
+  end
+
+  create_table "c", :id => false, :force => true do |t|
+    t.integer "id",   :null => false
+    t.integer "a_id"
+    t.text    "name"
+  end
 
   create_table "countries", :force => true do |t|
     t.string   "iso_code",   :limit => 3, :null => false
@@ -18,71 +35,160 @@ ActiveRecord::Schema.define(:version => 20130205030724) do
     t.datetime "created_at",              :null => false
   end
 
-  create_table "customers", :force => true do |t|
-    t.integer  "created_by",                   :null => false
-    t.string   "first_name",                   :null => false
-    t.string   "last_name",                    :null => false
-    t.string   "company"
-    t.string   "street_line1", :limit => 1024, :null => false
-    t.string   "street_line2", :limit => 1024
-    t.string   "city",                         :null => false
-    t.string   "state"
-    t.string   "zip",          :limit => 50
-    t.string   "country",      :limit => 3
-    t.datetime "deleted_at"
-    t.integer  "deleted_by",                   :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+  create_table "customer_principals", :force => true do |t|
+    t.integer  "customer_id",                   :null => false
+    t.integer  "deal_id",                       :null => false
+    t.string   "principal_name",                :null => false
+    t.string   "principal_email"
+    t.string   "principal_phone", :limit => 15
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
-  add_index "customers", ["created_by"], :name => "index_customers_on_created_by"
+  create_table "customers", :force => true do |t|
+    t.integer  "created_by_id",                 :null => false
+    t.string   "first_name",                    :null => false
+    t.string   "last_name",                     :null => false
+    t.string   "company"
+    t.string   "street_line1",  :limit => 1024, :null => false
+    t.string   "street_line2",  :limit => 1024
+    t.string   "city",                          :null => false
+    t.string   "state"
+    t.string   "zip",           :limit => 50
+    t.string   "country",       :limit => 3
+    t.datetime "deleted_at"
+    t.integer  "deleted_by"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "customers", ["created_by_id"], :name => "index_customers_on_created_by"
+
+  create_table "d", :id => false, :force => true do |t|
+    t.integer "id",   :null => false
+    t.integer "a_id"
+    t.text    "name"
+  end
 
   create_table "deal_types", :force => true do |t|
     t.string   "key",         :null => false
     t.string   "name",        :null => false
     t.text     "description"
+    t.text     "table_ref"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "deals", :force => true do |t|
-    t.integer  "deal_type_id",                                                                                      :null => false
-    t.integer  "billed_customer_id",                                                                                :null => false
-    t.string   "billed_customer_principal1"
-    t.string   "billed_customer_principal1_phone", :limit => 50
-    t.string   "billed_customer_principal1_email"
-    t.string   "billed_customer_principal2"
-    t.string   "billed_customer_principal2_phone", :limit => 50
-    t.string   "billed_customer_principal2_email"
-    t.integer  "target_customer_id",                                                                                :null => false
-    t.integer  "primary_broker_id",                                                                                 :null => false
-    t.integer  "property_id",                                                                                       :null => false
-    t.string   "type_of_use",                      :limit => 512
-    t.integer  "term"
-    t.date     "start_date"
-    t.decimal  "annual_rent",                                     :precision => 10, :scale => 2
-    t.decimal  "sale_price",                                      :precision => 10, :scale => 2
-    t.decimal  "security",                                        :precision => 10, :scale => 2
-    t.string   "attorney"
-    t.text     "notes"
-    t.boolean  "kda_sign",                                                                       :default => false
-    t.boolean  "kda_exclusive",                                                                  :default => false
-    t.integer  "advertise_type_id"
-    t.integer  "customer_referred_type"
-    t.integer  "listing_age"
-    t.integer  "option_count"
-    t.date     "option_start_date"
-    t.integer  "late_charge"
-    t.integer  "grace_period"
-    t.datetime "created_at",                                                                                        :null => false
-    t.datetime "updated_at",                                                                                        :null => false
+    t.integer  "deal_type_id",                                            :null => false
+    t.integer  "billed_customer_id",                                      :null => false
+    t.string   "billed_customer_attention"
+    t.integer  "primary_broker_id",                                       :null => false
+    t.text     "comments"
+    t.decimal  "total_due_to_kda",          :precision => 8, :scale => 2, :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "created_by_id",                                           :null => false
   end
 
   add_index "deals", ["billed_customer_id"], :name => "index_deals_on_billed_customer_id"
   add_index "deals", ["deal_type_id"], :name => "index_deals_on_deal_type_id"
   add_index "deals", ["primary_broker_id"], :name => "index_deals_on_primary_broker_id"
-  add_index "deals", ["property_id"], :name => "index_deals_on_property_id"
-  add_index "deals", ["target_customer_id"], :name => "index_deals_on_target_customer_id"
+
+  create_table "deals_appraisals", :force => true do |t|
+    t.integer  "deal_id"
+    t.text     "work_performed"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "deals_appraisals", ["deal_id"], :name => "index_deals_appraisals_on_deal_id"
+
+  create_table "deals_brokers", :force => true do |t|
+    t.integer  "deal_id",    :null => false
+    t.integer  "broker_id",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "deals_brokers", ["broker_id"], :name => "index_deals_brokers_on_broker_id"
+  add_index "deals_brokers", ["deal_id"], :name => "index_deals_brokers_on_deal_id"
+
+  create_table "deals_co_brokerages", :force => true do |t|
+    t.integer  "deal_id",                 :null => false
+    t.string   "co_brokerage",            :null => false
+    t.integer  "co_brokerage_percentage", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "deals_co_brokerages", ["deal_id"], :name => "index_deals_co_brokerages_on_deal_id"
+
+  create_table "deals_late_charges", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "percent"
+    t.integer  "grace_period"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "deals_late_charges", ["deal_id"], :name => "index_deals_late_charges_on_deal_id"
+
+  create_table "deals_leases", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "property_id",                                                      :null => false
+    t.integer  "leaser_customer_id",                                               :null => false
+    t.string   "leaser_attention"
+    t.decimal  "annual_rent_price",                 :precision => 10, :scale => 2, :null => false
+    t.string   "type_of_use",        :limit => 512
+    t.string   "term_of_lease"
+    t.date     "start_date",                                                       :null => false
+    t.decimal  "security",                          :precision => 10, :scale => 2
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
+  end
+
+  add_index "deals_leases", ["deal_id"], :name => "index_deals_leases_on_deal_id"
+  add_index "deals_leases", ["leaser_customer_id"], :name => "index_deals_leases_on_leaser_customer_id"
+  add_index "deals_leases", ["property_id"], :name => "index_deals_leases_on_property_id"
+
+  create_table "deals_marketing_data", :force => true do |t|
+    t.integer  "deal_id"
+    t.boolean  "sign_on_building",    :default => false, :null => false
+    t.boolean  "kda_exclusive",       :default => false, :null => false
+    t.text     "advertise_type"
+    t.text     "buyer_referral_type"
+    t.integer  "listing_period"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "deals_marketing_data", ["deal_id"], :name => "index_deals_marketing_data_on_deal_id"
+
+  create_table "deals_sales", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "property_id",                                                         :null => false
+    t.integer  "purchaser_customer_id",                                               :null => false
+    t.string   "purchaser_attention"
+    t.decimal  "sale_price",                           :precision => 10, :scale => 2, :null => false
+    t.string   "type_of_use",           :limit => 512
+    t.string   "attorney"
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+  end
+
+  add_index "deals_sales", ["deal_id"], :name => "index_deals_sales_on_deal_id"
+  add_index "deals_sales", ["property_id"], :name => "index_deals_sales_on_property_id"
+  add_index "deals_sales", ["purchaser_customer_id"], :name => "index_deals_sales_on_purchaser_customer_id"
+
+  create_table "deals_tax_protests", :force => true do |t|
+    t.integer  "deal_id"
+    t.text     "work_performed"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "deals_tax_protests", ["deal_id"], :name => "index_deals_tax_protests_on_deal_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -94,6 +200,17 @@ ActiveRecord::Schema.define(:version => 20130205030724) do
 
   add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
+
+  create_table "lease_options", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "option_count",                   :null => false
+    t.date     "begin_date",                     :null => false
+    t.integer  "option_notification_for_broker"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "lease_options", ["deal_id"], :name => "index_lease_options_on_deal_id"
 
   create_table "payment_schedules", :force => true do |t|
     t.integer  "deal_id",                                                      :null => false
@@ -118,6 +235,7 @@ ActiveRecord::Schema.define(:version => 20130205030724) do
     t.datetime "deleted_at"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.string   "zip",           :limit => 10
   end
 
   add_index "properties", ["space_type_id"], :name => "index_properties_on_space_type_id"

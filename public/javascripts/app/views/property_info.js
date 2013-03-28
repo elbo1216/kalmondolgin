@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'backbone', 'app/collections/properties'], function($, _, Backbone) {
-  PropertyView = Backbone.View.extend({
+define(['jquery', 'underscore', 'backbone', 'app/collections/properties', 'app/views/baseview'], function($, _, Backbone) {
+  PropertyView = BaseViewForm.extend({
     initialize: function(options) {
       var view = this;
       
@@ -47,7 +47,7 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/properties'], funct
                                               $('#property-selected-zip').html(model.get('zip'));
                                               $('#property-selected-country').html(model.get('country'));
                                               $('#property-selected-space-type').html(model.get('space_type'));
-                                              $('#property-selected-sale-price').html(model.get('sale_price'));
+                                              $('#property-selected').show();
                                           });
                         tbody.append(tr);
                       })
@@ -79,67 +79,72 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/properties'], funct
       //Validate values here
       if ($('#property-new-form').hasClass('selected')) {
         // Street Address must be valid
-        if (!$('#property_street1').val()) {
+        if (!$('#property-street1').val()) {
           errorMsg.push("Property street 1 cannot be blank")
-          $('#property_street1').addClass('error-input');
+          $('#property-street1').addClass('input-error');
         }
   
-        if (!$('#property_city').val()) {
+        if (!$('#property-city').val()) {
           errorMsg.push("Property city cannot be blank")
-          $('#property_city').addClass('error-input');
+          $('#property-city').addClass('input-error');
         }
   
-        if (!$('#property_state').val()) {
+        if (!$('#property-state').val()) {
           errorMsg.push("Property state cannot be blank")
-          $('#property_state').addClass('error-input');
+          $('#property-state').addClass('input-error');
         }
   
-        if (!$('#property_zip').val()) {
+        if (!$('#property-zip').val()) {
           errorMsg.push("Property zip cannot be blank")
-          $('#property_zip').addClass('error-input');
+          $('#property-zip').addClass('input-error');
         }
   
-        if (!$('#space_type').val()) {
+        if (!$('#space-type').val()) {
           errorMsg.push("Space Type cannot be blank");
-          $('#space_type').addClass('error-input');
+          $('#space-type').addClass('input-error');
   
         }
 
         if (!$('#property-size').val()) {
           errorMsg.push("Property size cannot be blank");
-          $('#property_size').addClass('error-input');
+          $('#property-size').addClass('input-error');
   
         }
 
         if (!$('#property-sale-price').val()) {
           errorMsg.push("Property sale price cannot be blank");
-          $('#property-sale-price').addClass('error-input');
+          $('#property-sale-price').addClass('input-error');
   
         }
       } else {
-        if (!$('#property-customer-id').val()) {
+        if (!$('#property-id').val()) {
           errorMsg.push("No property has been selected");
         }
       }
       return errorMsg;
     },
-    getPropertyValues: function() {
+    getValues: function() {
       var params = {};
       if ($('#property-new-form').hasClass('selected')) {
-        $.extend(params, {'street1': $('#property_street1').val(),
-                          'street2': $('#property_street2').val(),
-                          'city': $('#property_city').val(),
-                          'state': $('#property_state').val(),
-                          'zip': $('#property_zip').val(),
-                          'spaceType': $('#space_type').val(),
+        $.extend(params, {'street1': $('#property-street1').val(),
+                          'street2': $('#property-street2').val(),
+                          'city': $('#property-city').val(),
+                          'state': $('#property-state').val(),
+                          'zip': $('#property-zip').val(),
+                          'spaceType': $('#space-type').val(),
                           'salePrice': $('#property-sale-price').val(),
-                          'size': $('#property_size').val(),
-                          'buyerUse': $('#buyer_use').val(),
-                          'attorney': $('#property_attorney').val(),
-                          'size': $('#property_size').val()});
+                          'size': $('#property-size').val(),
+                          'buyerUse': $('#buyer-use').val(),
+                          'attorney': $('#property-attorney').val(),
+                          'size': $('#property-size').val()});
 
       } else {
-       $.extend(params, {'propertyId': $('#property-id').val()});
+       $.extend(params, {'propertyId': $('#property-id').val(),
+                          'salePrice': $('#property-selected-sale-price').val(),
+                          'size': $('#property-selected-size').val(),
+                          'buyerUse': $('#selected-buyer-use').val(),
+                          'attorney': $('#property-selected-attorney').val(),
+                          'size': $('#property-selected-size').val()});
       }
       return params;
     }

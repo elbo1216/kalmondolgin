@@ -21,5 +21,6 @@ class Property < ActiveRecord::Base
     property.country = params['country']
     property.size = params['size']
     property.save!
+    property
   end
 end

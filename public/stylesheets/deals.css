@@ -47,6 +47,10 @@ table tr {
   border-bottom: solid 1px rgb(150, 150, 150);
 }
 
+.top-border {
+  border-top: solid 1px rgb(150, 150, 150);
+}
+
 .container-well {
   background-color: rgba(240, 240, 240, 1);
   border-radius: 5px;
@@ -57,12 +61,25 @@ table tr {
   overflow: hidden;
 }
 
-.error-container {
+.message-container {
   margin: 0px 0px 10px 0px;
-  border: solid 2px rgb(200, 0, 0);
-  background-color: rgb(255, 220, 220);
   display: none;
 }
+
+.success-container {
+  border: solid 2px rgb(88, 200, 0);
+  background-color: rgb(220, 235, 208);
+}
+
+.error-container {
+  border: solid 2px rgb(200, 0, 0);
+  background-color: rgb(255, 220, 220);
+}
+
+.success-well {
+  border: solid 2px rgb(0, 200, 0);
+  background-color: rgb(220, 255, 220);
+ }
 
 .error-title {
   font-weight: bold;
@@ -76,7 +93,7 @@ table tr {
   margin: 0px 10px;
 }
 
-.error-input {
+.input-error {
   border: solid 2px rgb(200, 0, 0);
 }
 
@@ -89,7 +106,7 @@ table tr {
 }
 
 .container-frame table {
-  margin: 10px 0px 0px 10px;
+  margin: 10px 0px 10px 10px;
 }
 
 .container-frame .form-section-title {
@@ -422,25 +439,35 @@ table tr {
   cursor: pointer;
 }
 
-.customer-search .selected-customer {
+.customer-search .selected-container {
   font-size: 14px;
   display:none;
   width: 100%;
   border-top: solid 1px rgb(150, 150, 150);
 }
 
-.customer-search .selected-customer h3 {
+.customer-search .selected-container .selected-data {
+  float: left;
+}
+
+.customer-search .selected-container h3 {
   margin: 10px 10px 0px;
   font-size: 13px;
 }
 
-.customer-search .selected-customer ul {
-  float: none;
+.customer-search .selected-container ul {
+  float: left;
   margin: 10px 10px;
+}
+
+.customer-search .selected-container table {
+  float: right;
+  margin: 0px 40px 0px 0px;
 }
 
 .customer-search .selected-attention {
   margin: 5px 10px; 
+  float: left;
 }
 
 table td .span-label {
@@ -461,4 +488,27 @@ table td .span-label {
 .required {
   font-size: 12px;
   font-weight: bold;
+}
+
+.deal-search-results {
+  width: 98%;
+  border: solid black 1px;
+  margin: 10px;
+  border-collapse: collapse;
+}
+
+.deal-search-results thead {
+  background-color: rgb(199, 199, 199);
+}
+
+.deal-search-results th {
+  border-bottom: 1px solid black;
+}
+
+.deal-search-results td {
+  padding: 3px 5px;
+}
+
+.deals-data {
+  display: none;
 }

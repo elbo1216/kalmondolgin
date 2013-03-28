@@ -1,13 +1,11 @@
 <div class='sale-info-container container-frame'>
   <div class='form-section-title no-menu'>
-    <span class='title'><%= @form_label %> Info</span>
+    <span class='title'><%= form_label %> Info</span>
   </div>
-  <ul class='list bottom-border max-width'>
+  <ul class='list max-width'>
     <% if current_user.is_admin -%>
       <li>Broker: 
-        <select id='deal-main-broker' class='list-btn'>
-          <option value='' disabled>--Select--</option>
-        </select>
+        <%= select_tag 'deal-main-broker', options_for_select(@broker_option_list, @deal.primary_broker_id), :class => 'list-btn', :id => 'deal-main-broker' %>
       </li>
     <% else -%>
       <li>
@@ -15,15 +13,15 @@
          <input id='deal-main-broker' type='hidden' value='Patrick Borja'/>
       </li>
     <% end -%>
-    <li>Type: <%= @form_label %></li>
+    <li>Type: <%= form_label %></li>
     <li class='required'>Total Commision to KDA: <input type='text' class='short-input' name='kda_comm' id='kda_comm' /></li>
   </ul>
   <div class='clear'></div>
-  <% if @show_extra_broker_info %>
-    <div class='bottom-border auto-expand-floats'>
+  <% if show_broker_form %>
+    <div class='top-border auto-expand-floats'>
       <ul id='co-broker-info' class='list'>
-        <li>Co-Broker: <select id='co-broker-select' name='co_broker'><option>Prudential</option></select></li>
-        <li>Co-Broker %: <input type='text' class='short-input' name='co_broker_per' /></li>
+        <li>Co-Broker: <select id='co-broker-select'><option>Prudential</option></select></li>
+        <li>Co-Broker %: <input id='co_broker_per' type='text' class='short-input' name='co_broker_per' /></li>
       </ul>
       <ul class='list'>
         <li><input type='checkbox' id='activate-create-co-broker' value='1' />New Co-Broker</li>
@@ -31,7 +29,7 @@
       </ul>
     </div>
     <div class='clear'></div>
-    <div class=''>
+    <div class='top-border'>
       <ul id='other-broker-info' class='no-border other-broker-dropdown'>
         <li>Other Brokers in Deal:</li>
         <li> 

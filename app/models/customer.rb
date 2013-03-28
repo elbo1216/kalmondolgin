@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
 
+
   def Customer.get_customers_by_name(name)
     arr = name.chomp.split(' ')
     conditions = []
@@ -11,7 +12,7 @@ class Customer < ActiveRecord::Base
     Customer.find(:all, :conditions => conditions)
   end
 
-  def Customer.create_with_params!(params)
+  def Customer.create_with_params!(params, created_by)
     customer = Customer.new
     customer.first_name = params['first_name']
     customer.last_name = params['last_name']
@@ -22,6 +23,8 @@ class Customer < ActiveRecord::Base
     customer.state = params['state']
     customer.zip = params['zip']
     customer.country = params['country']
+    customer.created_by_id = created_by.id
     customer.save!
+    customer
   end
 end

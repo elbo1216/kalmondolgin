@@ -1,8 +1,9 @@
-<%= render  'appraisal_info' %>
 <div class='deal-left-container'>
+  <%= render  'form_meta_info', :show_broker_form => false, :form_label => 'Appraisal' %>
   <%= render  'bill_info' %>
 </div>
 <div class='deal-right-container'>
   <%= render  'extra_info' %>
   <%= render  'payment_schedule' %>
 </div>
+<script>require(['views/appraisal_form'], function() {});</script>

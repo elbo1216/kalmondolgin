@@ -3,7 +3,7 @@
     <li id='new' class='bt-border subnav-selected'>New
     <ul class='new-deal-container'>
       <a href='/deals/sale'>
-        <li id='sale' class='bt-border subnav-selected new-deal'>
+        <li id='sale' class='bt-border new-deal'>
           <span>Sale</span>
         </li>
       </a>
@@ -25,8 +25,9 @@
     </ul>
   </li>
 </ul>
+<div class='deals-data'><%= @data %></div>
 <div class='deals-container'>
-  <div id='error-container' class='container-well error-container'></div>
+  <div id='message-container' class='container-well message-container'></div>
   <div id='deals-form-container' class='container-well'>
     <%= render  @partial %>
     <div class='clear'></div>
@@ -38,3 +39,4 @@
     </div>
   </div>
 </div>
+<script>require(['views/deals_main'], function() {});</script>

@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'backbone', 'app/collections/customers'], function($, _, Backbone) {
-  CustomerView = Backbone.View.extend({
+define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/views/baseview'], function($, _, Backbone) {
+  CustomerView = BaseViewForm.extend({
     initialize: function(options) {
       var view = this;
       var formType = '#' + options.formType;
@@ -113,23 +113,23 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers'], functi
       //Validate values here
       if ($(formType + '-new-form').hasClass('selected')) {
         // Either Name or Company must be valid
-        if((!$(formType + '-first-name').val() && !$(formType + '-last-name').val()) || !$(formType + '-company').val()) {
-          if(!($(formType + '-company').val() &&
-               $(formType + '-first-name').val() &&
+        if (!(($(formType + '-first-name').val() && $(formType + '-last-name').val()) || $(formType + '-company').val())) {
+          if(!($(formType + '-company').val() ||
+               $(formType + '-first-name').val() ||
                $(formType + '-last-name').val())) {
             errorMsg.push("Enter a Name or Company")
-            $(formType + '-last-name').addClass('error-input');
-            $(formType + '-first-name').addClass('error-input');
-            $(formType + '-company-name').addClass('error-input');
+            $(formType + '-last-name').addClass('input-error');
+            $(formType + '-first-name').addClass('input-error');
+            $(formType + '-company-name').addClass('input-error');
           } else {
             if(!$(formType + '-first-name').val()) {
               errorMsg.push("First name cannot be blank")
-              $(formType + '-first-name').addClass('error-input');
+              $(formType + '-first-name').addClass('input-error');
             }
     
             if(!$(formType + '-last-name').val()) {
               errorMsg.push("Last name cannot be blank")
-              $(formType + '-last-name').addClass('error-input');
+              $(formType + '-last-name').addClass('input-error');
             }
           }
         }
@@ -137,47 +137,47 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers'], functi
         // Street Address must be valid
         if (!$(formType + '-street1').val()) {
           errorMsg.push("Street 1 cannot be blank")
-          $(formType + '-street1').addClass('error-input');
+          $(formType + '-street1').addClass('input-error');
         }
   
         if (!$(formType + '-city').val()) {
           errorMsg.push("City cannot be blank")
-          $(formType + '-city').addClass('error-input');
+          $(formType + '-city').addClass('input-error');
         }
   
         if (!$(formType + '-state').val()) {
           errorMsg.push("State cannot be blank")
-          $(formType + '-state').addClass('error-input');
+          $(formType + '-state').addClass('input-error');
         }
   
         if (!$(formType + '-zip').val()) {
           errorMsg.push("Zip cannot be blank")
-          $(formType + '-zip').addClass('error-input');
+          $(formType + '-zip').addClass('input-error');
         }
   
         if (!$(formType + '-attention-new').val()) {
           errorMsg.push("Attention cannot be blank");
-          $(formType + '-attention-new').addClass('error-input');
+          $(formType + '-attention-new').addClass('input-error');
   
         }
       } else {
         if (!$(formType + '-customer-id').val()) {
-          errorMsg.push("No Bill Customer has been selected");
+          errorMsg.push("No Customer has been selected");
         }
 
         if (!$(formType + '-attention-search').val()) {
           errorMsg.push("Attention cannot be blank");
-          $(formType + '-attention-search').addClass('error-input');
+          $(formType + '-attention-search').addClass('input-error');
         }
       }
       return errorMsg;
     },
-    getCustomerValues: function() {
+    getValues: function() {
       var formType = this.options['formType'];
       var params = {};
       if ($('#' + formType + '-new-form').hasClass('selected')) {
         $.extend(params, {'first_name': $('#' + formType + '-first-name').val(),
-                    'lastr_ame': $('#' + formType + '-last-name').val(),
+                    'last_name': $('#' + formType + '-last-name').val(),
                     'company': $('#' + formType + '-company').val(),
                     'street_line1': $('#' + formType + '-street1').val(),
                     'street_line2': $('#' + formType + '-street2').val(),
@@ -189,7 +189,7 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers'], functi
         $.extend(params, {'attention': $('#' + formType + '-attention-new').val()});
       } else {
        var key = formType + 'CustomerId';
-       $.extend(params, {key: $('#' + formType + '-customer-id').val()});
+       $.extend(params, {'customerId': $('#' + formType + '-customer-id').val()});
         $.extend(params, {'attention': $('#' + formType + '-attention-search').val()});
       }
 
