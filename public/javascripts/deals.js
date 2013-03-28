@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) {
   $(document).ready(function() {
     var form = document.URL.split("/")[4];
