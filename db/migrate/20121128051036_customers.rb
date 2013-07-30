@@ -15,6 +15,7 @@ class Customers < ActiveRecord::Migration
              deleted_at      timestamp,
              deleted_by      integer references users(id),
              created_at      timestamp not null default now(),
+             created_by      integer references users(id),
              updated_at      timestamp not null default now()
           )"
     execute sql

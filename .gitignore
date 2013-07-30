@@ -18,3 +18,4 @@
 public/.htaccess
 config/database.yml
 favicon.ico
+db/schema.rb
