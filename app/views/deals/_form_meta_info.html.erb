@@ -5,7 +5,7 @@
   <ul class='list max-width'>
     <% if current_user.is_admin -%>
       <li>Broker: 
-        <%= select_tag 'deal-main-broker', options_for_select(@broker_option_list, @deal.primary_broker_id), :class => 'list-btn', :id => 'deal-main-broker' %>
+        <%= select_tag 'deal-main-broker', options_for_select(@broker_option_list), :class => 'list-btn', :id => 'deal-main-broker' %>
       </li>
     <% else -%>
       <li>

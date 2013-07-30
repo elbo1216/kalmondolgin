@@ -1,4 +1,4 @@
-class DealsLateCharge < ActiveRecord
+class DealsLateCharge < ActiveRecord::Base
   belongs_to :deal
 
   def DealsLateCharge.create_with_params(deal_id, params)
