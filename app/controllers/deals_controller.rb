@@ -34,16 +34,19 @@ class DealsController < ApplicationController
   end
 
   def lease
+    @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "lease_form"
     render "index"
   end
 
   def appraisal
+    @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "appraisal_form"
     render "index"
   end
 
   def tax_protest
+    @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "tax_protest_form"
     render "index"
   end
