@@ -14,15 +14,15 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
       $(formType + '-new-form').click(function() {
         $(formType + '-search').hide();
         $(formType + '-new').show();
-        $(formType + '-new-form').addClass('selected');
-        $(formType + '-search-form').removeClass('selected');
+        $(formType + '-new-form').addClass('active');
+        $(formType + '-search-form').removeClass('active');
       });
 
       $(formType + '-search-form').click(function() {
         $(formType + '-search').show();
         $(formType + '-new').hide();
-        $(formType + '-new-form').removeClass('selected');
-        $(formType + '-search-form').addClass('selected');
+        $(formType + '-new-form').removeClass('active');
+        $(formType + '-search-form').addClass('active');
       });
 
       $(formType + '-search-button').click(function() {
@@ -64,13 +64,14 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
     addPrincipalForm: function() {
       var formType = this.options['formType'];
       var selected = "";
-      if ($('#' + formType + '-search-form').hasClass('selected')) {
+      if ($('#' + formType + '-search-form').hasClass('active')) {
         selected = "-selected";
       }
       var index = $('#' +  formType + selected + '-principal-form').find('ul').length + 1;
       var list = $('<ul>').attr("id", formType + selected + '-principal-' + index)
                           .css('display', 'none')
-                          .addClass('principal');
+                          .addClass('principal-content-container')
+                          .addClass('form-ul');
       list.append($('<li>')
                       .append($('<span>').addClass('title')
                                        .html('Principal ' + index))
@@ -84,22 +85,26 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
                                         }))
                       .append($('<div>').addClass('clear')))
           .append($('<li>')
-                      .append($('<span>').addClass('input-label')
-                                         .html('Name: '))
+                      .append($('<span>').html('Name: '))
                       .append($('<input>').addClass('long-input')
+                                          .addClass('form-control')
+                                          .addClass('selected-input')
                                           .attr('id', formType + selected + '-principal'+index)
-                                          .attr('type', 'input'))
+                                          .attr('type', 'input')
+                                          .css('margin-bottom', '12px'))
                  )
           .append($('<li>')
-                      .append($('<span>').addClass('input-label')
-                                         .html('Email: '))
+                      .append($('<span>').html('Email: '))
                       .append($('<input>').addClass('medium-input')
+                                          .addClass('form-control')
+                                          .addClass('selected-input')
                                           .attr('id', formType + selected + '-principal-email'+index)
                                           .attr('type', 'input')
                                           .css('margin-right', '12px'))
-                      .append($('<span>').addClass('input-label')
-                                         .html('Phone: '))
+                      .append($('<span>').html('Phone: '))
                       .append($('<input>').addClass('medium-input')
+                                          .addClass('form-control')
+                                          .addClass('selected-input')
                                         .attr('id', formType + selected + '-principal-phone'+index)
                                         .attr('type', 'input'))
                  );
@@ -108,10 +113,14 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
       list.fadeIn(400);
     },
     validateForm: function() {
+      // Remove all previous errors
+      $(formType + '-state-container-button').removeClass('input-error');
+      $(formType + '-info-container input').removeClass('input-error');
+
       var formType = '#' + this.options['formType'];
       var errorMsg = [];
       //Validate values here
-      if ($(formType + '-new-form').hasClass('selected')) {
+      if ($(formType + '-new-form').hasClass('active')) {
         // Either Name or Company must be valid
         if (!(($(formType + '-first-name').val() && $(formType + '-last-name').val()) || $(formType + '-company').val())) {
           if(!($(formType + '-company').val() ||
@@ -145,14 +154,19 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
           $(formType + '-city').addClass('input-error');
         }
   
-        if (!$(formType + '-state').val()) {
+        if (!$(formType + '-state-container-input').val()) {
           errorMsg.push("State cannot be blank")
-          $(formType + '-state').addClass('input-error');
+          $(formType + '-state-container-button').addClass('input-error');
         }
   
         if (!$(formType + '-zip').val()) {
           errorMsg.push("Zip cannot be blank")
           $(formType + '-zip').addClass('input-error');
+        } else {
+          if(isNaN($(formType + '-zip').val())) {
+            errorMsg.push("Zip must be a number");
+            $(formType + '-attention-new').addClass('input-error');
+          }
         }
   
         if (!$(formType + '-attention-new').val()) {
@@ -175,16 +189,16 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
     getValues: function() {
       var formType = this.options['formType'];
       var params = {};
-      if ($('#' + formType + '-new-form').hasClass('selected')) {
+      if ($('#' + formType + '-new-form').hasClass('active')) {
         $.extend(params, {'first_name': $('#' + formType + '-first-name').val(),
                     'last_name': $('#' + formType + '-last-name').val(),
                     'company': $('#' + formType + '-company').val(),
                     'street_line1': $('#' + formType + '-street1').val(),
                     'street_line2': $('#' + formType + '-street2').val(),
                     'city': $('#' + formType + '-city').val(),
-                    'state': $('#' + formType + '-state').val(),
+                    'state': $('#' + formType + '-state-container-input').val(),
                     'zip': $('#' + formType + '-zip').val(),
-                    'country': $('#' + formType + '-country').val()});
+                    'country': $('#' + formType + '-country-container-input').val()});
 
         $.extend(params, {'attention': $('#' + formType + '-attention-new').val()});
       } else {
@@ -206,6 +220,17 @@ define(['jquery', 'underscore', 'backbone', 'app/collections/customers', 'app/vi
       });
         $.extend(params, {'principals' : principals});
       return params; 
+    },
+    clearForm: function() {
+      var formType = this.options['formType'];
+      $('#' + formType + '-info-container').find('input').val('');
+      $('#' + formType + '-state-container-button .button-text').html('Find a State');
+      $('#' + formType + '-country-container-button .button-text').html('Find a Country');
+      $('#' + formType + '-principal-form').html('');
+      $('#' + formType + '-selected-principal-form').html('');
+      $('#' + formType + '-search-results-table').hide();
+      $('#' + formType + '-selected-customer').hide();
+      
     }
   });
   

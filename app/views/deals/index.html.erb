@@ -1,40 +1,15 @@
-<ul class='sub-nav-deals container-well'>
-  <a href='/deals/search'><li id='search' class='bt-border'>Search</li></a>
-    <li id='new' class='bt-border subnav-selected'>New
-    <ul class='new-deal-container'>
-      <a href='/deals/sale'>
-        <li id='sale' class='bt-border new-deal'>
-          <span>Sale</span>
-        </li>
-      </a>
-      <a href='/deals/lease'>
-        <li id='lease' class='bt-border new-deal'>
-          <span>Lease</span>
-        </li>
-      </a>
-      <a href='/deals/appraisal'>
-        <li id='appraisal' class='bt-border new-deal'>
-          <span>Appraisal</span>
-        </li>
-      </a>
-      <a href='/deals/tax_protest'>
-        <li id='tax_protest' class='new-deal'>
-          <span>Tax Protest</span>
-        </li>
-      </a>
-    </ul>
-  </li>
-</ul>
 <div class='deals-data'><%= @data %></div>
 <div class='deals-container'>
-  <div id='message-container' class='container-well message-container'></div>
+  <div id='message-container' class='message-container alert'></div>
   <div id='deals-form-container' class='container-well'>
     <%= render  @partial %>
     <div class='clear'></div>
     <div class='submit-form-bottom container-well form-buttons'>
       <ul>
-        <li class='clear-form'>Clear</li>
-        <li class='submit-form'>Submit</li>
+        <li>
+          <button id='submit-form' class='btn btn-info btn-lg'>Submit</button>
+          <div id='deal-submit-load' class='deal-submit-load btn-lg'>Saving<img src='/images/ajax-loader.gif'/></div>
+        </li>
       </ul>
     </div>
   </div>

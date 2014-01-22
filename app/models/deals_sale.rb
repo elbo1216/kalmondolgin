@@ -9,7 +9,7 @@ class DealsSale < ActiveRecord::Base
     sale_deal.property_id = params['propertyInfo']['propertyId'] || Property.create_new_property(params['propertyInfo']).id
     sale_deal.purchaser_customer_id = params['purchaserCustomer']['customerId'] || Customer.create_with_params!(params['purchaserCustomer'], created_by).id
     sale_deal.purchaser_attention = params['purchaserCustomer']['attention']
-    sale_deal.sale_price = params['propertyInfo']['salePrice']
+    sale_deal.sale_price = params['propertyInfo']['price']
     sale_deal.type_of_use = params['propertyInfo']['buyerUse']
     sale_deal.attorney = params['propertyInfo']['attorney']
     sale_deal.save!

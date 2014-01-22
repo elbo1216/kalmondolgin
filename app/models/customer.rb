@@ -1,6 +1,5 @@
 class Customer < ActiveRecord::Base
 
-
   def Customer.get_customers_by_name(name)
     arr = name.chomp.split(' ')
     conditions = []

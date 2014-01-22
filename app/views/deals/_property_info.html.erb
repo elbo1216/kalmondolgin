@@ -1,110 +1,187 @@
-<div class='property-info-container container-frame'>
-  <div class='form-section-title'>
+<div class='property-info-container default-container'>
+  <div class='title-container'>
     <span class='title'>Property Info</span>
   </div>
-  <table class='sub-menu'>
+  <table class='window-nav'>
     <tr>
-      <td id='property-search-form' class='sub-container-tab selected'>Search</td>
-      <td id='property-new-form' class='sub-container-tab'>New</td>
-      <td class='td-filler'></td>
+      <td id='property-search-form' class='window-nav-tab active'>Search</td>
+      <td id='property-new-form' class='window-nav-tab'>New</td>
     </tr>
   </table>
   <div class='clear'></div>
   <div id='property-new' class='new-form'>
-    <table>
-      <tr>
-        <td class='input-label'>Street 1</td>
-        <td><input type='text' id='property-street1' class='long-input' /></td>
-      </tr>
-      <tr>
-        <td class='input-label'>Street 2</td>
-        <td><input type='text' id='property-street2' class='long-input' /></td>
-      </tr>
-      <tr>
-        <td class='input-label'>City</td>
-        <td><input type='text' id='property-city' class='medium-input' />
-          <span class='span-label'>State</span>
-          <select id='property-state' class='small-label'></select>
-          <span class='span-label'>Zip:</span>
-          <input type='text' id='property-zip' class='short-input' />
-        </td>
-      </tr>
-      <tr>
-        <td class='input-label'>Country</td>
-        <td><select id='property-country'></select></td>
-      </tr>
-      <tr>
-        <td class='input-label'>Space Type</td>
-        <td>
-          <select id='space-type'></select>
-        </td>
-      </tr>
-      <tr>
-        <td class='input-label'>Sale Price</td>
-        <td>
-          $<input type='text' id='property-sale-price' class='medium-input' />
-          <span class='span-label'>Size</span>
-          <input type='text' id='property-size' class='short-input' />ft
-          <span id='sqft' class='span-label'></span>
-        </td>
-      </tr>
-      <tr>
-        <td class='input-label'>Buyer Use</td>
-        <td>
-          <input type='text' id='buyer-use' class='medium-input' />
-        </td>
-      </tr>
-        <td class='input-label'>Attorney Name</td>
-        <td>
-          <input type='text' id='property-attorney' class='medium-input' />
-        </td>
-      </tr>
-    </table>
+    <ul class='input-group-xs form-ul'>
+      <li>
+        <label class='search-input-label'>Street 1</label>
+        <input type='text' id='property-street1' class='form-control long-input' />
+      </li>
+      <li>
+        <label class='search-input-label'>Street 2</label>
+        <input type='text' id='property-street2' class='form-control long-input' />
+      </li>
+      <li>
+        <label class='search-input-label required'>City</label>
+        <input type='text' id='property-city' class='form-control medium-input' />
+      </li>
+      <li>
+        <label class='search-input-label required'>State</label>
+        <span id='property-state-container' class='5nput-group-btn'></span>
+        <div class='clear'></div>
+      </li>
+      <li>
+        <label class='search-input-label required'>Zip</label>
+        <input type='text' id='bill-zip' class='form-control short-input' />
+      </li>
+      <li>
+        <label class='search-input-label'>Country</label>
+        <span id='property-country-container' class='input-group-btn'></span>
+        <div class='clear'></div>
+      </li>
+      <li>
+        <label class='search-input-label'>Space Type</label>
+        <span id='space-type' class='input-group-btn'></span>
+        <div class='clear'></div>
+      </li>
+      <li>
+        <label class='search-input-label'>Size</label>
+        <span>
+          <input type='text' id='property-size' class='medium-input form-control addon-right' />
+         <span class='input-group-addon'>ft</span>
+        </span>
+        <span id='sqft' class='span-label'></span>
+      </li>
+      <div class='clear'></div>
+      <% if deal_type == "lease" %>
+        <li>
+          <label class='search-input-label'>Lease Price (Annual)</label>
+          <span>
+            <span class='input-group-addon'>$</span>
+            <input type='text' id='property-price' class='medium-input form-control addon-left' />
+          </span>
+        </li>
+        <div class='clear'></div>
+        <li>
+          <label class='search-input-label'>Term of Lease (Months)</label>
+          <input type='text' id='term-of-lease' class='form-control medium-input' />
+        </li>
+        <li>
+          <label class='search-input-label'>Start Date</label>
+          <input type='text' id='start-date' class='form-control medium-input' />
+        </li>
+        <li>
+          <label class='search-input-label'>Security</label>
+          <input type='text' id='security' class='form-control medium-input' />
+        </li>
+        <li>
+          <label class='search-input-label'>Tenant Use</label>
+          <input type='text' id='tenant-use' class='form-control medium-input' />
+      <% else -%>
+        <li>
+          <label class='search-input-label'>Sale Price</label>
+          <span>
+            <span class='input-group-addon'>$</span>
+            <input type='text' id='property-price' class='medium-input form-control addon-left' />
+          </span>
+          <div class='clear'></div>
+        </li>
+        <li>
+          <label class='search-input-label'>Buyer Use</label>
+          <input type='text' id='buyer-use' class='long-input form-control' />
+        </li>
+        <li>
+          <label class='search-input-label'>Attorney Name</label>
+          <input type='text' id='property-attorney' class='long-input form-control' />
+        </li>
+      <% end -%>
+    </ul>
   </div>
   <div id='property-search' class='customer-search property-search'>
-    <div class='search-form'>
-      Address: <input id='property-search-address' class='search-input'/>
-      <br/>
-      City: <input id='property-search-city' class='short-search-input'/>
-      State: <input id='property-search-state' class='short-search-input'/>
-      Zip: <input id='property-search-zip' class='short-search-input'/>
-      <span id='property-search-button' class='gray-button search-button'>Search</span>
-    </div>
+    <ul class='form-ul'>
+      <li>
+        <span class='customer-search-label'>Address:</span>
+        <input id='property-search-address' class='form-control address-search-input'/></li>
+      <li class='clear'></li>
+      <li>
+        <span class='short-search-input'>
+          <span>City:</span><input id='property-search-city' class='form-control'/>
+        </span>
+        <span class='short-search-input'>
+          <span>State:</span><input id='property-search-state' class='form-control'/>
+        </span>
+        <span class='short-search-input'>
+          <span>Zip:</span><input id='property-search-zip' class='form-control'/>
+        </span>
+        <button id='property-search-button' class='btn btn-primary btn-xs'>Search</button>
+      </li>
+    </ul>
     <div id='property-selected' class='selected-container'>
-      <div class='selected-data'>
-        <h3>Selected Property</h3>
-        <input type='hidden' value='' id='property-id' />
-        <ul>
-          <li id='property-selected-street1'></li>
-          <li id='property-selected-street2'></li>
+      <h3>Selected Property</h3>
+      <input type='hidden' value='' id='property-id' />
+      <ul class='selected-info'>
+        <li id='property-street1-selected'></li>
+        <li id='property-street2-selected'></li>
+        <li>
+          <span id='property-city-selected'></span>
+          <span id='property-state-selected'></span>
+          <span id='property-zip-selected'></span>
+        </li>
+        <li id='property-country-selected'></li>
+        <li id='property-space-type-selected'></li>
+      </ul>
+      <ul class='form-ul selected-form-ul'>
+        <li>
+          <label>Size</label>
+          <span>
+            <input type='text' id='property-size-selected' class='medium-input form-control addon-right' />
+            <span class='input-group-addon'>ft</span>
+          </span>
+          <span id='sqft' class='span-label'></span>
+          <div class='clear'></div>
+        </li>
+        <% if deal_type == "lease" %>
           <li>
-            <span id='property-selected-city'></span>
-            <span id='property-selected-state'></span>
-            <span id='property-selected-zip'></span>
+            <label>Lease Price (Annual)</label>
+            <span>
+              <span class='input-group-addon'>$</span>
+              <input type='text' id='property-price-selected' class='medium-input form-control addon-left' />
+            </span>
+            <div class='clear'></div>
           </li>
-          <li id='property-selected-country'></li>
-          <li id='property-selected-space-type'></li>
-        </ul>
-      </div>
-      <table>
-        <tr>
-          <td><span class='span-label'>Sale Price</span></td>
-          <td>$<input type='text' id='property-selected-sale-price' class='medium-input' /></td>
-        </tr>
-        <tr>
-          <td><span class='span-label'>Size</span></td>
-          <td><input type='text' id='property-selected-size' class='short-input' />ft
-          <span id='sqft' class='span-label'></span></td>
-        </tr>
-        <tr>
-          <td><span class='span-label'>Buyer Use</span></td>
-          <td><input type='text' id='selected-buyer-use' class='medium-input' /></td>
-        </tr>
-        <tr>
-          <td><span class='span-label'>Attorney Name</span></td>
-          <td><input type='text' id='property-selected-attorney' class='medium-input' /></td>
-        </tr>
-      </table>
+          <li>
+            <label>Term Of Lease</label>
+            <input type='text' id='term-of-lease-selected' class='form-control medium-input' />
+          </li>
+          <li>
+            <label>Start Date</label>
+            <input type='text' id='start-date-selected' class='form-control medium-input' />
+          </li>
+          <li>
+            <label>Tenant Use</label>
+            <input type='text' id='tenant-use-selected' class='form-control medium-input' />
+          </li>
+          <li>
+            <label>Security</label>
+            <input type='text' id='security-selected' class='form-control medium-input' />
+          </li>
+        <% else -%>
+          <li>
+            <label>Sale Price</label>
+            <span>
+              <span class='input-group-addon'>$</span>
+              <input type='text' id='property-price-selected' class='medium-input form-control addon-left' />
+            </span>
+          </li>
+          <li>
+            <label>Buyer Use</label>
+            <input type='text' id='buyer-use-selected' class='form-control medium-input' />
+          </li>
+          <li>
+            <label>Attorney Name</label>
+            <input type='text' id='property-attorney-selected' class='form-control medium-input' />
+          </li>
+        <% end -%>
+      </ul>
+      <div class='clear'></div>
     </div>
     <div class='search-results'>
       <img id='property-search-wait' class='search-wait' src='/images/ajax-loader.gif' />

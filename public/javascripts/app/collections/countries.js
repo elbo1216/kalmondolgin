@@ -2,12 +2,12 @@ define(['jquery', 'underscore', 'backbone', 'app/models/country'], function($, _
     Countries = Backbone.Collection.extend({
       model: Country,
       url: '/deals/get_all_countries',
-      optionList: function() {
-        var optionList = new Array();
+      countryList: function() {
+        var list = new Array();
         for(var i=0; i<this.models.length; i++) {
-          optionList.push("<option value='" + this.models[i].get('key') + "'>" + this.models[i].get('name') + "</option>");
+          list.push({'id': this.models[i].get('id'), 'name': this.models[i].get('name')});
         }
-        return optionList;
+        return list;
       },
     })
 })

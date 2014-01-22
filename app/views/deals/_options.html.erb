@@ -1,45 +1,39 @@
-<div class='options-container container-frame'>
-  <div class='form-section-title no-menu'>
-    <span class='title'>Options</title>
+<div class='options-container default-container'>
+  <div class='title-container'>
+    <span class='title'>Options</span>
   </div>
-  <table>
-    <tr>
-      <td class='input-label-long'>Options in Lease?</td>
-      <td>
-        <input type='radio' name='options' value='yes'/> Yes
-        <input type='radio' name='options' value='no'/> No
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>How many options?</td>
-      <td>
-        <input type='text' id='options_count' class='long-input'/>
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>Date Options Begins</td>
-      <td>
-        <input type='text' id='options_begin' class='long-input' />
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>Late Charges Apply?</td>
-      <td>
-        <input type='radio' name='late_charges_apply' value='yes'/> Yes
-        <input type='radio' name='late_charges_apply' value='no'/> No
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>Late Charge %</td>
-      <td>
-        <input type='text' id='late_charge_per' class='long-input'/>
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>Grace Period</td>
-      <td>
-        <input type='text' id='late_charge_grace_period' class='long-input' />
-      </td>
-    </tr>
-  </table>
+  <ul class='form-ul'>
+    <li>
+      <label class='form-label'>Options in Lease?</label>
+      <input class='form-radio' type='radio' name='options' value='yes'/> Yes
+      <input class='form-radio' type='radio' name='options' value='no' checked/> No
+      <div class='clear'></div>
+    </li>
+    <li>
+      <label class='form-label'>How many options?</label>
+      <input type='text' id='options_count' class='form-control long-input'/>
+    </li>
+    <li>
+      <label class='form-label'>Date Options Begins</label>
+      <input type='text' id='options_begin' class='form-control long-input' />
+    </li>
+    <li>
+      <label class='form-label'>Late Charges Apply?</label>
+      <input class='form-radio' type='radio' name='late_charges_apply' value='yes'/> Yes
+      <input class='form-radio' type='radio' name='late_charges_apply' value='no' checked/> No
+      <div class='clear'></div>
+    </li>
+    <li>
+      <label class='form-label'>Late Charge %</label>
+      <span>
+        <input type='text' id='late_charge_per' class='form-control long-input addon-right' />
+        <span class='input-group-addon'>%</span>
+      </span>
+      <div class='clear'></div>
+    </li>
+    <li>
+      <label class='form-label'>Grace Period</label>
+      <input type='text' id='late_charge_grace_period' class='form-control long-input' />
+    </li>
+  </ul>
 </div>

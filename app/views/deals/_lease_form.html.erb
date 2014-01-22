@@ -4,9 +4,116 @@
   <%= render  'purchase_info' %>
 </div>
 <div class='deal-right-container'>
-  <%= render  'property_info' %>
+  <%= render  'property_info', :deal_type => 'lease' %>
   <%= render  'marketing_info' %>
   <%= render  'options' %>
   <%= render  'payment_schedule' %>
 </div>
-<script>require(['views/lease_form'], function() {});</script>
+<script>
+  require(['views/form_meta_info',
+           'views/customer', 
+           'views/payment_schedule', 
+           'views/property_info', 
+           'views/marketing', 
+           'views/lease_option', 
+           'views/deal_form'
+           ], function() {
+    $(document).ready(function() {
+      // Drop downs for the meta info
+      var data = $.parseJSON(_.unescape('<%= @broker_list.map { |m| {'id' => m['id'], 'name' => m['name']} }.to_json %>'));
+      var formMetaInfo = new FormMetaInfo({brokerData: data, coBrokerData: [{'id':'prudential', 'name': 'Prudential'}]});
+      // Views for the form
+      var billCustomerView = new CustomerView({formType: 'bill', el: $('#bill-info-container')});
+      var purchaserCustomerView = new CustomerView({formType: 'purchaser', el: $('#purchaser-info-container')});
+      var propertyView = new PropertyView({formType: 'lease'});
+      var marketingView = new MarketingView();
+      var paymentScheduleView = new PayoutView();
+      var options = new LeaseOptionsView()
+      var lateCharge = new LeaseLateChargeView();
+      var leaseForm = new DealFormView(
+               {'el': '#deals-form-container',
+                'registeredForms': [
+                     {
+                       'name': 'formMetaInfo', 
+                       'title' : 'Form Meta Info',
+                       'viewObj': formMetaInfo
+                     }, 
+                     {
+                       'name': 'billCustomer', 
+                       'title' : 'Bill Customer',
+                       'viewObj': billCustomerView
+                     }, 
+                     {
+                        'name': 'purchaserCustomer', 
+                        'title' : 'Purchaser Customer',
+                        'viewObj': purchaserCustomerView
+                     },
+                     {
+                        'name': 'propertyInfo',
+                        'title' : 'Property Info',
+                        'viewObj': propertyView
+                     },
+                     {
+                        'name': 'marketing',
+                        'title' : 'Marketing Info',
+                        'viewObj': marketingView
+                     }, 
+                     {
+                        'name': 'options',
+                        'title' : 'Options',
+                        'viewObj': options 
+                     }, 
+                     {
+                        'name': 'lateCharge',
+                        'title' : 'Late Charge',
+                        'viewObj': lateCharge 
+                     }, 
+                     {
+                        'name': 'paymentSchedule',
+                        'title' : 'Payment Schedule',
+                        'viewObj': paymentScheduleView
+                     }
+                ]
+               });
+      leaseForm.initialize();
+      leaseForm.populateStatesOptions(['bill-state-container', 'purchaser-state-container', 'property-state-container']);
+      leaseForm.populateCountryOptions(['bill-country-container', 'purchaser-country-container', 'property-country-container']);
+      leaseForm.populateSpaceTypeOptions(['space-type']);
+      leaseForm.populateBrokersOptions(['broker-list-btn', 'deal-main-broker']);
+
+      // Submit form
+      $('#submit-form').click(function() {
+        var errors = leaseForm.validateForm();
+        if (errors.length > 0) {
+          populateErrorMsg(errors);
+        } else {
+          // Add the message container to send success message
+          var leaseParams = {'dealType': 'lease', 
+                             'messageContainer': 'message-container'}
+          $.extend(leaseParams, {'messageContainer': 'message-container'})
+          leaseForm.submitForm(leaseParams);
+        }
+        $('html, body').animate({ scrollTop: 0 }, 0);
+      });
+    
+      function populateErrorMsg(errorMsg) {
+        var ul = $('<ul>');
+        for( var i=0; i<errorMsg.length; i++) {
+          var ul2 = $('<ul>').css('float', 'none');
+          ul2.append($('<li>').html(errorMsg[i]['title'])
+                              .addClass('error-area'));
+          for (var j=0; j<errorMsg[i]['errors'].length; j++) {
+            ul2.append($('<li>').html(errorMsg[i]['errors'][j])
+                                .addClass('error-msg'));
+          }
+          ul.append($('<li>').append(ul2));
+        }
+        $('#message-container').addClass('alert-danger')
+                               .empty()
+                               .append("<span class='error-title'>The following errors were detected:</span>") 
+                               .append(ul)
+                               .show();
+      }
+    });
+  });
+</script>

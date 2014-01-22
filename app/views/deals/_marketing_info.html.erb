@@ -1,45 +1,39 @@
-<div class='marketing-info-container container-frame'>
-  <div class='form-section-title no-menu'>
-    <span class='title'>Marketing Info</title>
+<div class='marketing-info-container default-container'>
+  <div class='title-container'>
+    <span class='title'>Marketing Info</span>
   </div>
-  <table>
-    <tr>
-      <td class='input-label-long'>Did KDA have a sign on the building?</td>
-      <td>
-        <input type='radio' name='kda_sign' value='yes'/> Yes
-        <input type='radio' name='kda_sign' value='no' checked/> No
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>KDA exclusive?</td>
-      <td>
-        <input type='radio' name='kda_exclusive' value='yes'/> Yes
-        <input type='radio' name='kda_exclusive' value='no' checked/> No
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>How did we advertise?</td>
-      <td>
-        <input type='text' id='advertise_type' name='advertise_type' class='long-input'/>
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>How did buyer find KDA?</td>
-      <td>
-        <input type='text' id='buyer_find'  name='buyer_find' class='long-input' />
-      </td>
-    </tr>
-    <tr>
-      <td class='input-label-long'>How long was listing on the market (Days)</td>
-      <td>
-        <input type='text' id='market_days' name='market_days' class='long-input'>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=2>
-        Broker Notes/Comments<br/>
-        <textarea id='broker_comments' name='comments' rows=10 cols=70></textarea>
-      </td>
-    </tr>
-  </table>
+  <ul id='marketing-info-list' class='form-ul'>
+    <li>
+      <label class='form-label'>Did KDA have a sign on the building?</label>
+      <span>
+        <input class='form-radio' type='radio' name='kda_sign' value='yes'/> Yes
+        <input class='form-radio' type='radio' name='kda_sign' value='no' checked/> No
+      </span>
+      <div class='clear'>
+    </li>
+    <li>
+      <label class='form-label'>KDA exclusive?</label>
+      <span>
+        <input class='form-radio' type='radio' name='kda_exclusive' value='yes'/> Yes
+        <input class='form-radio' type='radio' name='kda_exclusive' value='no' checked/> No
+      </span>
+      <div class='clear'>
+    </li>
+    <li>
+      <label class='form-label'>How did we advertise?</label>
+      <input type='text' id='advertise_type' name='advertise_type' class='form-control long-input'/>
+    </li>
+    <li>
+      <label class='form-label'>How did buyer find KDA?</label>
+      <input type='text' id='buyer_find'  name='buyer_find' class='form-control long-input' />
+    </li>
+    <li>
+      <label class='form-label'>How long was listing on the market (Days)</label>
+      <input type='text' id='market_days' name='market_days' class='form-control long-input'>
+    </li>
+    <li>
+      <span class='form-label'>Broker Notes/Comments</span><br/>
+      <textarea id='broker_comments' class='form-control form-text-area' name='comments' rows=10 cols=70></textarea>
+    </li>
+  </ul>
 </div>

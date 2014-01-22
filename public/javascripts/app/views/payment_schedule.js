@@ -1,36 +1,67 @@
 define(['jquery', 'underscore', 'backbone', 'lib/jquery-ui-1.10.1.custom', 'app/views/baseview'], function($, _, Backbone) {
   PayoutView = BaseViewForm.extend({
      initialize: function(options) {
+       var _dd = this;
        $('#add-payment-row').click(function() {
          var index = $('input[name="paymentDate"]').length + 1;
-         var inputDate = $('<input>').attr('type', 'text')
-                                     .attr('id', 'paymentDate' + index)
-                                     .attr('name', 'paymentDate')
-                                     .addClass('medium-input')
-                                     .datepicker({});
-         var inputPayment = $('<input>').attr('type', 'text')
-                                       .attr('id', 'paymentDue' + index)
-                                       .attr('name', 'paymentDue')
-                                       .addClass('medium-input');
-         var tr = $('<tr>')
-            .append($('<td>').append(inputDate))
-            .append($('<td>').append(inputPayment));
-
-         $('#payment-schedule-table tbody').append(tr);
+         $('#payment-schedule-list').append(_dd.createNewRow(index));
+         $('#paymentDate'+index).datepicker({dateFormat: "yy-mm-dd"});
        });
         
        $('input[name="paymentDate"]').each(function() {
-          $(this).datepicker({});
+          $(this).datepicker({dateFormat: "yy-mm-dd"});
        });
+     },
+     createNewRow: function(index) {
+       var row ="<input id='paymentDate" + index + "' name='paymentDate' type=text class='form-control medium-input'>" + 
+                 "<span>" + 
+                 "<span class='input-group-addon'>$</span>" + 
+                 "<input id='paymentDue" + index + "' type=text class='form-control medium-input addon-left'>" + 
+                 "<span>" + 
+                 "<div class='clear'></div>";
+       return $('<li>').html(row);
      },
      getValues: function() {
        var payments = [];
-       $('#payment-schedule-table tr').each(function(index, row) {
+       $('#payment-schedule-list li').each(function(index, row) {
         if ($('#paymentDate' + index).val() != "") {
           payments.push({'paymentDate': $('#paymentDate' + index).val(), 'paymentDue': $('#paymentDue' + index).val()});
         }
        });
        return payments;
+     },
+     validateForm: function() {
+      // Remove all previous errors
+       $('#payment-schedule-list input').removeClass('input-error');
+
+       var errorMsg = [];
+       if (!$('#paymentDate1').val()) {
+         errorMsg.push("First Payment Date cannot be blank")
+         $('#paymentDate1').addClass('input-error');
+       }
+
+       if (!$('#paymentDue1').val()) {
+         errorMsg.push("First Payment Due cannot be blank")
+         $('#paymentDue1').addClass('input-error');
+       }
+
+       // Check to make sure the paymentDue are integers
+       var listCount = $('#payment-schedule-list li').length;
+       for (var i=1;i<=listCount;i++) {
+         var pDue = $('#paymentDue' + i);
+         if (isNaN(pDue.val())) {
+         errorMsg.push('Payment ' + i + ' must be a number')
+         pDue.addClass('input-error');
+         }
+       }
+
+       return errorMsg;
+     },
+     clearForm: function() {
+       $('#payment-schedule-list li').each(function(index, obj) {
+         if (index > 2) { $(obj).remove(); }
+         $(obj).find('input').val('');
+       });
      }
   });
 });

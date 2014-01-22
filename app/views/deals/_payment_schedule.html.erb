@@ -1,32 +1,32 @@
-<div class='payment-schedule-container container-frame'>
-  <div class='form-section-title no-menu'>
+<div class='payment-schedule-container default-container'>
+  <div class='title-container'>
     <span class='title'>Payout Schedule</span>
   </div>
-  <table id='payment-schedule-table'>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Payment Due</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input id='paymentDate1' name='paymentDate' type=text class='medium-input'></td>
-        <td><input id='paymentDue1' type=text class='medium-input'></td>
-      </tr>
-      <tr>
-        <td><input id='paymentDate2' name='paymentDate' type=text class='medium-input'></td>
-        <td><input id='paymentDue2'type=text class='medium-input'></td>
-      </tr>
-      <tr>
-        <td><input id='paymentDate3' name='paymentDate' type=text class='medium-input'></td>
-        <td><input id='paymentDue3' type=text class='medium-input'></td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan=4><span id='add-payment-row' class='gray-button add-row-button'>Add Row</button></span>
-      </tr>
-    </tfoot>
-  </table>
+  <ul id='payment-schedule-list' class='form-ul payout-form-ul'>
+    <li>
+      <input id='paymentDate1' name='paymentDate' type=text class='form-control medium-input'>
+      <span>
+        <span class='input-group-addon'>$</span>
+        <input id='paymentDue1' type=text class='form-control medium-input addon-left'>
+      <span>
+      <div class='clear'></div>
+    </li>
+    <li>
+      <input id='paymentDate2' name='paymentDate' type=text class='form-control medium-input'>
+      <span>
+        <span class='input-group-addon'>$</span>
+        <input id='paymentDue2' type=text class='form-control medium-input addon-left'>
+      <span>
+      <div class='clear'></div>
+    </li>
+    <li>
+      <input id='paymentDate3' name='paymentDate' type=text class='form-control medium-input'>
+      <span>
+        <span class='input-group-addon'>$</span>
+        <input id='paymentDue3' type=text class='form-control medium-input addon-left'>
+      <span>
+      <div class='clear'></div>
+    </li>
+  </ul>
+  <button id='add-payment-row' class='btn btn-primary btn-xs payment-schedule-btn'>Add Row</button>
 </div>

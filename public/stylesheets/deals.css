@@ -1,13 +1,13 @@
-table tr {
-  height: 30px;
+.deal-submit-load {
+  color: gray;
+  font-style: italic;
+  background-color: rgb(234, 246, 253);
+  border: solid 1px rgb(178, 222, 233);
+  display: none;
 }
 
-.auto-expand-floats {
-  overflow: hidden;
-}
-
-.ui-datepicker-calendar tr {
-  height: 0px;
+.deal-submit-load img {
+  margin: 0px 10px;
 }
 
 .short-input {
@@ -15,16 +15,11 @@ table tr {
 }
 
 .long-input {
-  width: 310px;
+  width: 250px;
 }
 
 .medium-input {
  width: 127px;
-}
-
-.input-label {
-  width: 100px;
-  font-size: 14px;
 }
 
 .input-label-long {
@@ -51,29 +46,22 @@ table tr {
   border-top: solid 1px rgb(150, 150, 150);
 }
 
-.container-well {
-  background-color: rgba(240, 240, 240, 1);
-  border-radius: 5px;
-  border: 2px solid rgba(50, 50, 50, .8);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  color: black;
-  padding: 20px;
-  overflow: hidden;
+.message-container {
+  margin: 0px 0px 10px 10px;
+  display: none;
 }
 
-.message-container {
-  margin: 0px 0px 10px 0px;
-  display: none;
+.message-container ul {
+  padding: 0px;
+}
+
+.add-on-input {
+  width: 84%;
 }
 
 .success-container {
   border: solid 2px rgb(88, 200, 0);
   background-color: rgb(220, 235, 208);
-}
-
-.error-container {
-  border: solid 2px rgb(200, 0, 0);
-  background-color: rgb(255, 220, 220);
 }
 
 .success-well {
@@ -83,18 +71,77 @@ table tr {
 
 .error-title {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
+}
+  
+.error-area {
+  font-weight: bold;
+  font-size: 12px;
   margin: 5px 0px;
 }
 
 .error-msg {
   font-style: italic;
-  font-size: 14px;
+  font-size: 11px;
   margin: 0px 10px;
 }
 
-.input-error {
-  border: solid 2px rgb(200, 0, 0);
+.addon-left {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 0px;
+  float: left;
+}
+
+.addon-right {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 4px;
+  float: left;
+}
+
+.form-ul {
+  margin: 10px 15px;
+}
+
+.form-ul li {
+  margin: 6px 8px;
+}
+
+.form-ul .form-control {
+  height: 23px;
+}
+
+.form-ul .form-radio {
+  margin-left: 5px
+}
+
+.form-ul .form-text-area {
+  height: auto;
+}
+
+.selected-form-ul {
+  float: left;
+}
+
+.selected-form-ul label {
+  float: left;
+  width: 150px;
+}
+
+.selected-form-ul input {
+  display: inline;
+}
+
+.payout-form-ul input {
+  display: inline;
+  margin-right: 10px;
+}
+
+.input-group-addon {
+  float: left;
 }
 
 .container-frame {
@@ -114,7 +161,6 @@ table tr {
   font-weight: bold;
   font-size: 18px;
   float:none;
-  overflow: auto;
   padding: 3px 0px 13px;
 }
 
@@ -170,7 +216,6 @@ table tr {
 }
 
 .deals-container {
-  width: 75%;
   z-index: 100;
   min-height: 786px;
   float: left;
@@ -185,6 +230,11 @@ table tr {
 .deal-right-container {
   float: left;
   width: 54%;
+  margin: 0px 0px 0px 10px;
+}
+
+.selected-input {
+  display: inline;
   margin: 0px 0px 0px 10px;
 }
 
@@ -294,14 +344,14 @@ table tr {
   cursor: pointer;
 }
 
-.sale-info-container .other-broker-dropdown {
+.other-broker-dropdown {
   float: left;
   width: 30%;
   margin: 10px;
   font-size: 14px;
 }
 
-.sale-info-container .other-broker-list {
+.other-broker-list {
   min-height: 15px;
   width: 50%;
   float: left;
@@ -309,82 +359,51 @@ table tr {
   font-size: 14px;
 }
 
-.other-broker-list li {
-  float:left;
-  border: 1px solid black;
-  font-size: 12px;
-  margin: 5px 10px 0px 0px;
-  padding: 2px 4px;
-  border-radius: 10px;
-}
-
-.other-broker-list .remove {
-  font-weight: bold;
-  font-family: courier;
-  margin: 0px 0px 0px 10px;
-  font-size: 10px;
-}
-
-.other-broker-list .remove:hover {
-  cursor: pointer;
-}
-
-.gray-button {
-  text-align: center;
-  font-size: 12px;
+.principal-button {
   margin: 10px 0px 10px 10px;
-  width: 100px;
-  border-radius: 5px;
-  border: solid 1px rgb(150, 150, 150);
-  background-color: rgb(220, 220, 220);
-}
-
-.gray-button:hover {
-  cursor: pointer;
-  background-color: rgb(235, 235, 235);
 }
 
 .principal-form {
   overflow: hidden;
 }
 
-.container-frame .principal {
-  border: 1px solid rgb(150,150,150);
+.principal-content-container {
+  border: 1px solid rgb(200,200,200);
   padding: 3px 10px 10px;
   margin: 5px 13px;
   float: none;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: rgb(250, 250, 250);
 }
 
-.principal .title {
+.principal-content-container .title {
   margin: 0px 0px 5px 0px;
   font-size: 14px;
   float: left;
   font-style: italic;
 }
 
-.principal .close {
+.principal-content-container .close {
   float: right;
 }
 
-.principal .close:hover {
+.principal-content-container .close:hover {
   cursor: pointer;
 }
 
 .new-form {
   display: none;
+  width: 100%;
 }
 
-.customer-search .search-form {
-  padding: 20px 9px;
-  font-size: 12px;
+.new-form .customer-form-submit {
+  text-align: right;
 }
 
-.customer-search .search-form .search-input {
-  width: 70%;
-}
-
-.property-search .search-form .search-input {
-  width: 90%;
+.new-form .customer-form-submit-btn {
+  width: 70px;
+  margin: 10px 0px 0px 0px;
 }
 
 .customer-search .search-form .short-search-input {
@@ -396,6 +415,32 @@ table tr {
   padding: 0px 20px;
 }
 
+.property-search .search-form {
+  margin: 0px 0px 20px 0px;
+}
+
+.property-search .search-form li {
+  margin: 0px 0px 10px 0px;
+  width: 100%;
+}
+
+.form-ul .address-search-input {
+  width: 85%;
+  display: inline;
+}
+
+.form-ul .short-search-input {
+  width: 27%;
+  float: left;
+  margin: 0px 15px 0px 0px;
+}
+
+.form-ul .short-search-input input {
+  display: inline;
+  margin: 0px 0px 0px 10px;
+  width: 69%;
+}
+
 .customer-search .search-results .search-wait {
   margin: 50px 0px;
   display: none;
@@ -403,7 +448,7 @@ table tr {
 
 .customer-search .search-results {
   width: 100%;
-  border-top: 1px solid rgb(150, 150, 150);
+  border-top: 1px solid #CDCDCD;
   margin: auto;
   text-align: center;
   height: 250px;
@@ -418,8 +463,8 @@ table tr {
   margin: 0px;
 }
 
-.customer-search .search-results .search-results-header {
-  background-color: rgb(204, 204, 204);
+.search-results-header {
+  background-color: rgb(236, 238, 255);
 }
 
 .customer-search .search-results table th {
@@ -435,39 +480,66 @@ table tr {
 }
 
 .customer-search .search-results .results-row:hover {
-  background-color: rgb(250, 250, 250);
+  background-color: rgb(234, 235, 245);
   cursor: pointer;
 }
 
-.customer-search .selected-container {
-  font-size: 14px;
+.selected-container {
+  font-size: 12px;
   display:none;
   width: 100%;
   border-top: solid 1px rgb(150, 150, 150);
+  background-color: rgb(235, 235, 235);
 }
 
-.customer-search .selected-container .selected-data {
+.selected-container .selected-data {
   float: left;
 }
 
-.customer-search .selected-container h3 {
-  margin: 10px 10px 0px;
+.selected-container h3 {
+  margin: 10px 15px 0px;
   font-size: 13px;
 }
 
-.customer-search .selected-container ul {
-  float: left;
-  margin: 10px 10px;
-}
 
-.customer-search .selected-container table {
+.selected-container table {
   float: right;
   margin: 0px 40px 0px 0px;
+  font-size: 12px;
+}
+
+.selected-info {
+  float: left;
+  margin: 10px 0px 0px 15px;
+  padding: 0px;
+  width: 35%;
 }
 
 .customer-search .selected-attention {
-  margin: 5px 10px; 
   float: left;
+  width: 62%;
+}
+
+.customer-search .selected-attention input {
+  width: 80%;
+}
+
+
+.property-search .search-form ul {
+  padding: 0px;
+}
+
+.property-search .search-form ul li {
+  float: none;
+  margin: 10px 0px 0px;
+}
+
+.property-search .search-form li input {
+  display: inline;
+}
+
+.property-search .search-form .search-input {
+  width: 80%;
 }
 
 table td .span-label {
@@ -475,19 +547,8 @@ table td .span-label {
   font-size: 14px;
 }
 
-.payment-schedule-container table .add-row-button {
-  padding: 0px 20px;
-}
-
-.sale-info-container .list {
-  padding: 10px 10px;
-  margin: 0px;
-  font-size: 14px;
-}
-
-.required {
-  font-size: 12px;
-  font-weight: bold;
+.payment-schedule-btn {
+  margin: 5px 22px;
 }
 
 .deal-search-results {
@@ -512,3 +573,46 @@ table td .span-label {
 .deals-data {
   display: none;
 }
+
+/*****
+WINDOW
+******/
+.default-container .window-nav {
+  padding: 0px;
+  margin: 0px;
+  display: table;
+  width: 100%;
+}
+
+.default-container .window-nav .window-nav-tab {
+  padding: 5px 10px;
+  border-bottom: 1px solid #CDCDCD;  
+  font-size: 13px;
+  width: 50%;
+  text-align: center;
+  color: #A8A8A8;
+  float: left;
+  border-left: solid 1px #CDCDCD;
+}
+
+.default-container .window-nav .window-nav-tab:first-child {
+  border-left: 0px;
+}
+.default-container .window-nav:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.default-container .window-nav .active {
+  border-bottom: 0px;  
+  color: #428bca;
+}
+
+.default-container .window-nav .active > a {
+  color: #428bca;
+  cursor: default;
+}
+
+/*****
+END WINDOW
+*****/

@@ -6,4 +6,84 @@
   <%= render  'extra_info' %>
   <%= render  'payment_schedule' %>
 </div>
-<script>require(['views/appraisal_form'], function() {});</script>
+<script>
+  require(['views/form_meta_info',
+           'views/customer', 
+           'views/payment_schedule', 
+           'views/extra_info', 
+           'views/deal_form'
+           ], function() {
+    $(document).ready(function() {
+      // Drop downs for the meta info
+      var data = $.parseJSON(_.unescape('<%= @broker_list.map { |m| {'id' => m['id'], 'name' => m['name']} }.to_json %>'));
+      var formMetaInfo = new FormMetaInfo({brokerData: data, coBrokerData: [{'id':'prudential', 'name': 'Prudential'}]});
+      // Views for the form
+      var billCustomerView = new CustomerView({formType: 'bill', el: $('#bill-info-container')});
+      var paymentScheduleView = new PayoutView();
+      var extraInfo = new ExtraInfo();
+      var appraisalForm = new DealFormView(
+               {'el': '#deals-form-container',
+                'registeredForms': [
+                     {
+                       'name': 'formMetaInfo', 
+                       'title' : 'Form Meta Info',
+                       'viewObj': formMetaInfo
+                     }, 
+                     {
+                       'name': 'extraInfo', 
+                       'title' : 'Extra Info',
+                       'viewObj': extraInfo
+                     }, 
+                     {
+                       'name': 'billCustomer', 
+                       'title' : 'Bill Customer',
+                       'viewObj': billCustomerView
+                     }, 
+                     {
+                        'name': 'paymentSchedule',
+                        'title' : 'Payment Schedule',
+                        'viewObj': paymentScheduleView
+                     }
+                ]
+               });
+      appraisalForm.initialize();
+      appraisalForm.populateStatesOptions(['bill-state-container']);
+      appraisalForm.populateCountryOptions(['bill-country-container']);
+      appraisalForm.populateBrokersOptions(['broker-list-btn', 'deal-main-broker']);
+
+      // Submit form
+      $('#submit-form').click(function() {
+        var errors = appraisalForm.validateForm();
+        if (errors.length > 0) {
+          populateErrorMsg(errors);
+        } else {
+          // Add the message container to send success message
+          var appraisalParams = {'dealType': 'appraisal', 
+                             'messageContainer': 'message-container'}
+          $.extend(appraisalParams, {'messageContainer': 'message-container'})
+          appraisalForm.submitForm(appraisalParams);
+        }
+        $('html, body').animate({ scrollTop: 0 }, 0);
+      });
+    
+      function populateErrorMsg(errorMsg) {
+        var ul = $('<ul>');
+        for( var i=0; i<errorMsg.length; i++) {
+          var ul2 = $('<ul>').css('float', 'none');
+          ul2.append($('<li>').html(errorMsg[i]['title'])
+                              .addClass('error-area'));
+          for (var j=0; j<errorMsg[i]['errors'].length; j++) {
+            ul2.append($('<li>').html(errorMsg[i]['errors'][j])
+                                .addClass('error-msg'));
+          }
+          ul.append($('<li>').append(ul2));
+        }
+        $('#message-container').addClass('alert-danger')
+                               .empty()
+                               .append("<span class='error-title'>The following errors were detected:</span>") 
+                               .append(ul)
+                               .show();
+      }
+    });
+  });
+</script>

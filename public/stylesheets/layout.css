@@ -1,109 +1,278 @@
-body {
-  margin: 0px;
-  background-color: rgb(198, 204, 221);
-  color: rgb(0, 0, 0);
-}
-
-ul {
-  list-style-type: none;
-  margin: 0px; 
-  padding: 0px;
-}
-
-a {
-  text-decoration: none;
-}
-
 .clear {
   clear:both;
 }
 
-.top-container {
-  height: 75px;
-  width: 100%;
-  background-color: rgb(18, 27, 38);
-}
-
-.top-container .logo-container {
-  float:left;
-  width: 15%;
-  padding: 15px 5px;
-}
-
-.top-container .top-right-container {
-  float:left;
-  width: 84%;
-}
-
-.top-container .top-right-container li {
-  float: left;
-}
-
-.top-container .main-meta {
-  color: rgb(255,226, 179);
-  margin: 5px 10px 0px 0px;
-  float: right;
-}
-
-.top-container .main-meta li {
-  margin: 0px 0px 0px 20px;
-  font-size: 12px;
-  float: none;
-}
-
-.top-container .main-meta .welcome {
+body {
+  background-color: rgb(46, 44, 48);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  line-height: 1.43;
+}
+
+a {
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px
+}
+
+/** SIDEBAR **/
+.sidebar {
+  float: left;
+  width: 15%;
+}
+
+.sidebar .logo {
+  height: 70px;
+}
+
+.sidebar ul {
+  padding: 0px;
+  background-color: rgb(58, 58, 58); 
+}
+
+.sidebar li {
+  border-top: 1px solid rgb(59, 57, 61);
+  border-bottom: 1px solid rgb(35, 33, 36);
+  background-image: -webkit-linear-gradient(top, rgb(49, 47, 51) 0%, rgb(46, 44, 48) 100%);
+}
+
+.sidebar li a {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 10px 0 10px 15px;
+  display: block;
+}
+
+.sidebar .arrow {
+  float: right;
+  margin: 4px 15px 0 -10px;
+  font-size: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.sidebar .menu .active {
+  background-image: -webkit-linear-gradient(top, rgb(70, 67, 73) 0%, rgb(62, 59, 65) 100%);
   font-weight: bold;
 }
 
-.top-container .welcome-text {
-  margin: 50px 0px 0px 0px;
+.sidebar .menu .active a {
+  color: rgba(255,255,255,0.8);
 }
 
-.top-container .sub-nav li {
-  float:left;
-  margin: 0px 0px 0px 15px;
+.sidebar .submenu ul {
+  display: none;
 }
 
-.top-container .main-nav {
+.sidebar .menu .submenu ul {
+  background-color: rgb(39, 39, 41);
+}
+
+.sidebar .menu .submenu li {
+  background-image: none;
+}
+
+.sidebar .menu .submenu ul a {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 10px 0 10px 25px;
+  display: block;
+  font-weight: normal;
+}
+
+.sidebar .menu .submenu ul .active a {
+  color: white;
+}
+/** END SIDEBAR **/
+
+/** CONTENT CONTAINER **/
+.content-container {
+  overflow: hidden;
   float: left;
-  margin: 0px 0px 0px 90px;
-  height: 35px;
+  width: 85%;
+}
+/** END CONTENT CONTAINER **/
+
+/** TOP MENU **/
+.top-menu-container ul {
+  float: right;
+  margin: 0px 20px;
+  padding: 0px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-.top-container .main-nav li {
-  font-size: 18px;
-  width: 170px;
-  text-align: center;
-  height: 35px;
-  margin: 40px 0px 0px 10px;
-  background-color: rgba(198, 204, 221, .5);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.top-menu-container ul li {
+  color: rgba(255, 255, 255, .6);
+  float: left;
+  font-size: 10px;
+  border-right: 1px solid rgba(0,0,0,0.2);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 10px;
 }
 
-.top-container .main-nav li span {
-  line-height: 38px;
-  color: rgba(220, 220, 220, .7);
+.top-menu-container ul li:hover {
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+/** END TOP MENU **/
+
+/** MAIN CONTENT **/
+.main-content {
+  background: none repeat scroll 0 0 #eceaf3;
+  width: 100%;
+  overflow: auto;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
-.top-container .main-nav span:hover {
-  color: rgb(255,226, 179);
+.default-container {
+  border: 1px solid #CDCDCD; 
+  border-radius: 6px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 10px;
 }
 
-.top-container .main-nav span:hover {
+.default-container .title-container {
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom: 1px solid #CDCDCD;
+  background-image: linear-gradient(to bottom, #f5f4f9 0%, #eceaf3 100%);
+  height: 36px;
+}
+
+.default-container .title-container span {
+  color: #666666;
+  text-shadow: 0 1px 0 rgb(255, 255, 255);
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  line-height: 12px;
+  margin: 0;
+}
+
+.default-container table {
+  margin: 10px;
+}
+
+.default-container .input-error {
+  border: solid 2px red;
+  border-radius: 4px;
+}
+
+.default-container .dropdown-toggle {
+  padding: 5px;
+  font-size: 10px;
+  width: 160px;
+  text-align: right;
+}
+
+.default-container .caret {
+  display: block;
+  float: right;
+  margin: 5px 2px;
+}
+
+.default-container .input-short {
+  width: 150px;
+  display: inline;
+}
+
+.default-container .dropdown-menu {
+  font-size: 12px;
+}
+
+.default-container .dropdown-menu li:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
+}
+
+.default-container button .button-text {
+  float: left;
+}
+
+.default-container .input-group-addon {
+  line-height: 9px;
+  width: auto;
+}
+
+.form-label {
+  font-size: 13px;
+  padding: 2px;
+  width: 45%;
+  float: left;
+  font-weight: normal;
+}
+
+.search-input-label {
+  font-size: 13px;
+  width: 50%;
+  float: left;
+  font-weight: normal;
+}
+
+.customer-search-label {
+  width: 50px;
+}
+
+.customer-search-input {
+  width: 370px;
+  margin: 0px 3px;
+  display: inline;
+}
+
+.co-broker-per {
+  width: 100px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  float: left;
+  border: 1px solid #cccccc;
+}
+
+.input-group-value {
+  font-size: 12px;
+  font-style: italic;
+  color: #A5A5A5;
+}
+
+/** END MAIN CONTENT **/
+
+/** FORM META INFO **/
+.default-container table .dropdown-menu li {
+  padding: 2px 5px 1px;
+  color: rgb(130, 130, 130);
+}
+
+.other-broker-list li {
+  float:left;
+  border: 1px solid rgb(150, 150, 150);
+  font-size: 12px;
+  margin: 5px 10px 0px 0px;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.other-broker-list li span {
+  color: rgb(150, 150, 150);
+}
+ 
+.other-broker-list .remove {
+  font-weight: bold;
+  font-family: courier;
+  margin: 0px 0px 0px 10px;
+  font-size: 10px;
+}
+
+.other-broker-list .remove:hover {
   cursor: pointer;
 }
 
-.top-container .main-nav .nav-selected {
-  background-color: rgb(198, 204, 221);
-}
 
-.top-container .main-nav .nav-selected span {
-  color: black;
-  font-weight: bold;
-}
-
-.main-content {
-  overflow: hidden;
-}
+/** FORM META INFO END **/

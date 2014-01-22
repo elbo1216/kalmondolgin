@@ -19,13 +19,9 @@ class DealsController < ApplicationController
   end
 
   def sale
-    @partial = "sale_form"
-    @show_extra_broker_info = true
+    @broker_list = User.get_broker_list
     @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
-    if params['id']
-      @deal = Deal.find(params['id'])
-      @data = {:deal => @deal}.to_json
-    end
+    @partial = "sale_form"
     render "index"
   end
 
@@ -34,18 +30,21 @@ class DealsController < ApplicationController
   end
 
   def lease
+    @broker_list = User.get_broker_list
     @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "lease_form"
     render "index"
   end
 
   def appraisal
+    @broker_list = User.get_broker_list
     @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "appraisal_form"
     render "index"
   end
 
   def tax_protest
+    @broker_list = User.get_broker_list
     @broker_option_list = User.get_broker_list.map {|b| [b['name'], b['id']] }.unshift(["--Select--", ''])
     @partial = "tax_protest_form"
     render "index"
@@ -78,33 +77,11 @@ class DealsController < ApplicationController
   end
 
   def submit
-puts params.inspect
-    bill_customer = params['billCustomer']['customerId'] || Customer.create_with_params!(params['billCustomer']).id
     ret = {'success' => true, 'errors' => [], 'dealId' => ''}
 
     begin
-      deal = Deal.new   
-      deal.deal_type_id = DealType.find_by_key(params['dealType']).id
-      deal.primary_broker_id = params['mainBroker']
-      deal.billed_customer_id = bill_customer unless bill_customer.blank?
-      deal.billed_customer_attention = params['billCustomer']['attention']
-      deal.total_due_to_kda = params['totalDueToKDA']
-      deal.created_by_id = current_user.id
-      deal.save!
+      deal = Deal.create_deal!(params, current_user)
       ret['dealId'] = deal.id
-      
-      case params['dealType']
-      when "sale"
-        DealsSale.create_deal!(deal.id, params, current_user)
-        deal.comments = params['marketingInfo']['broker_comments']
-      when "lease"
-        DealsLease.create_deal!(deal.id, params, current_user)
-      when "appraisal"
-        DealsAppraisal.create_deal!(deal.id, params, current_user)
-      when "tax_protest"
-        DealsTaxProtest.create_deal!(deal.id, params, current_user)
-      else
-      end
     rescue Exception => e
       logger.error e
       logger.error e.backtrace.join("\n")

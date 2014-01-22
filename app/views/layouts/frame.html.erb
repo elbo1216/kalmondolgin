@@ -1,41 +1,33 @@
 <html>
   <head>
+    <script data-main="/javascripts/app/main.js" src="/javascripts/lib/RequireJS.2.1.2.js"></script>
+    <%= stylesheet_link_tag "lib/bootstrap.css" %>
+    <%= stylesheet_link_tag "lib/jquery-ui/jquery-ui-1.10.1.custom" %>
     <%= stylesheet_link_tag "layout" %>
     <%= stylesheet_link_tag "dashboard" %>
     <%= stylesheet_link_tag "deals" %>
-    <%= stylesheet_link_tag "lib/jquery-ui/jquery-ui-1.10.1.custom" %>
-    <script data-main="/javascripts/app/main.js" src="/javascripts/lib/RequireJS.2.1.2.js"></script>
   </head>
   <body>
-    <div class='top-container'>
-      <div class='logo-container'><img src='/images/logo.png' /></div>
-      <div class='top-right-container'>
-        <ul class='main-nav'>
-          <a href='/dashboard'><li id='dashboard'><span>HOME</span></li></a>
-          <a href='/deals'><li id='deals' ><span>DEALS</span></li></a>
-          <a href='/brokers'><li id='brokers' ><span>BROKERS</span></li></a>
-          <a href='/reports'><li id='reports' ><span>REPORTS</span></li></a>
-          <a href='/invoices'><li id='invoices' ><span>INVOICES</span></li></a>
-        </ul>
-        <ul class='main-meta'>
-          <li class='sub-nav'>
-            <ul>
-              <li>Profile</li>
-              <li>|</li>
-              <li>Logout</li>
-            </ul>
+    <div class='sidebar'>
+      <div class='logo'>Brokerage Base</div>
+      <div id='main-nav' class='main-nav'></div>
+    </div>
+    <div class='content-container'>
+      <div class='top-menu-container'>
+        <ul>
+          <li>
+            <i class='glyphicon glyphicon-cog'></i>
+            <span>Settings</span>
           </li>
           <li>
-             <ul class='welcome-text'>
-               <li class='welcome'>Welcome Dodo</li>
-             </ul>
+            <i class='glyphicon glyphicon-share-alt'></i>
+            <span>Logout</span>
           </li>
         </ul>
       </div>
-    </div>
-    <div class='clear'></div>
-    <div class='main-content'>
-      <%= yield %>
+      <div class='main-content'>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
